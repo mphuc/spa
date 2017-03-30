@@ -105,7 +105,7 @@
       <!-- Preloader start -->
       <div id="page-preloader" class="animated text-center" style="position: fixed;">
          <img src="catalog/view/theme/default/images/logo.png" alt="wellness Center Wordpress theme" class="logo-prelaoder"/>
-         <h1 class="title-preloader">Art-naturalce.com</h1>
+         <h1 class="title-preloader">Art-naturalcare.com</h1>
          <div class="spinner">
             <div class="double-bounce1"></div>
             <div class="double-bounce2"></div>
@@ -150,6 +150,7 @@
                       <li id="menu-item-155" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-on"><a title="Offers" href="hoahong.html">Hoa hồng trên thu nhập trực tiếp của F1</a></li>
                       <li id="menu-item-155" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-on"><a title="Offers" href="doanhso.html">Hoa hồng Đồng chia tổng doanh số</a></li>
                       <li id="menu-item-155" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-on"><a title="Offers" href="loinhuan.html">Chia lợi nhuận chuỗi spa</a></li>
+                      <li id="menu-item-155" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-on"><a title="Offers" href="dt.html">Lịch sử ĐT</a></li>
                     </ul>
                   </li>
                   <li id="menu-item-161" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-no"><a title="Blog" href="setting.html">Cài đặt</a></li>

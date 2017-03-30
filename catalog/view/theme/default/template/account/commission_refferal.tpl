@@ -15,9 +15,11 @@
                   <thead>
                     <tr class="header">
                       <th><?php echo $lang['column_no'] ?></th>
+                      <th>Mã giao dịch</th>
                       <th><?php echo $lang['column_amount'] ?></th>
                       <th><?php echo $lang['column_date_added'] ?></th>
                       <th><?php echo $lang['column_wallet'] ?></th>
+                      <th>Số dư ví trực tiếp</th>
                       <!-- <th><?php echo $lang['column_description'] ?></th> -->
                   </tr>
                   </thead>
@@ -29,10 +31,11 @@
                     ?>
                     <tr>
                       <td data-title="<?php echo $lang['column_no'] ?>"><?php echo $i;?></td>
+                      <td data-title="Mã giao dịch"><?php echo $value['code'];?></td>
                       <td data-title="<?php echo $lang['column_amount'] ?>"><?php echo $value['text_amount'];?></td>
                       <td data-title="<?php echo $lang['column_date_added'] ?>"><?php echo date('d/m/Y H:i',strtotime($value['date_added']));?></td>
                       <td data-title="<?php echo $lang['column_wallet'] ?>"><?php echo $value['wallet'];?></td>
-                      
+                      <td data-title="Số dư ví trực tiếp"><?php echo number_format($value['balance']);?> VNĐ</td>
                       <!-- <td data-title="<?php echo $lang['Description'] ?>"><?php echo $value['system_decsription'];   ?></td> -->
                     </tr>
                     <?php

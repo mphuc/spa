@@ -527,6 +527,23 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		return $query;
 	}
 
+	public function checkDT_Wallet($id_customer){
+		$query = $this -> db -> query("
+			SELECT COUNT(*) AS number
+			FROM  ".DB_PREFIX."customer_dt_wallet
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+		");
+		return $query -> row;
+	}
+	public function insertDT_Wallet($amount, $id_customer){
+		$query = $this -> db -> query("
+			INSERT INTO " . DB_PREFIX . "customer_dt_wallet SET
+			customer_id = '".$this -> db -> escape($id_customer)."',
+			amount = ".$amount."
+		");
+		return $query;
+	}
+
 
 
 	public function get_block_id($id_customer){
@@ -2968,7 +2985,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT COUNT(*) AS number
 			FROM  ".DB_PREFIX."customer_transaction_history
-			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND wallet LIKE 'Hoa hồng trực tiếp' OR wallet LIKE 'Trả hoa hồng trực tiếp'
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND ( wallet LIKE 'Hoa hồng trực tiếp' OR wallet LIKE 'Trả hoa hồng trực tiếp')
 		");
 
 		return $query -> row;
@@ -2979,7 +2996,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT *
 			FROM  ".DB_PREFIX."customer_transaction_history AS pd
-			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."' AND pd.wallet LIKE 'Hoa hồng trực tiếp' OR pd.wallet LIKE 'Trả hoa hồng trực tiếp'
+			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."' AND ( pd.wallet LIKE 'Hoa hồng trực tiếp' OR pd.wallet LIKE 'Trả hoa hồng trực tiếp' )
 			ORDER BY pd.date_added DESC
 			LIMIT ".$limit."
 			OFFSET ".$offset."
@@ -2992,7 +3009,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT COUNT(*) AS number
 			FROM  ".DB_PREFIX."customer_transaction_history
-			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND wallet LIKE 'Hoa hồng cộng hưởng' OR wallet LIKE 'Trả hoa hồng cộng hưởng'
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND ( wallet LIKE 'Hoa hồng cộng hưởng' OR wallet LIKE 'Trả hoa hồng cộng hưởng')
 		");
 
 		return $query -> row;
@@ -3003,7 +3020,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT *
 			FROM  ".DB_PREFIX."customer_transaction_history AS pd
-			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."' AND wallet LIKE 'Hoa hồng cộng hưởng' OR wallet LIKE 'Trả hoa hồng cộng hưởng'
+			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."' AND (wallet LIKE 'Hoa hồng cộng hưởng' OR wallet LIKE 'Trả hoa hồng cộng hưởng')
 			ORDER BY pd.date_added DESC
 			LIMIT ".$limit."
 			OFFSET ".$offset."
@@ -3016,7 +3033,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT COUNT(*) AS number
 			FROM  ".DB_PREFIX."customer_transaction_history
-			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND wallet LIKE 'Hoa hồng trên thu nhập trực tiếp F1' OR wallet LIKE 'Trả hoa hồng trên thu nhập trực tiếp của F1'
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND ( wallet LIKE 'Hoa hồng trên thu nhập trực tiếp F1' OR wallet LIKE 'Trả hoa hồng trên thu nhập trực tiếp của F1' )
 		");
 
 		return $query -> row;
@@ -3027,7 +3044,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT *
 			FROM  ".DB_PREFIX."customer_transaction_history AS pd
-			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."' AND wallet LIKE 'Hoa hồng trên thu nhập trực tiếp F1' OR wallet LIKE 'Trả hoa hồng trên thu nhập trực tiếp của F1'
+			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."' AND (wallet LIKE 'Hoa hồng trên thu nhập trực tiếp F1' OR wallet LIKE 'Trả hoa hồng trên thu nhập trực tiếp của F1')
 			ORDER BY pd.date_added DESC
 			LIMIT ".$limit."
 			OFFSET ".$offset."
@@ -3040,7 +3057,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT COUNT(*) AS number
 			FROM  ".DB_PREFIX."customer_transaction_history
-			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND wallet LIKE 'Đồng chia tổng doanh số' OR wallet LIKE 'Trả đồng chia tổng doanh sô'
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND (wallet LIKE 'Đồng chia tổng doanh số' OR wallet LIKE 'Trả đồng chia tổng doanh sô')
 		");
 
 		return $query -> row;
@@ -3051,7 +3068,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT *
 			FROM  ".DB_PREFIX."customer_transaction_history AS pd
-			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."' AND wallet LIKE 'Đồng chia tổng doanh số' OR wallet LIKE 'Trả đồng chia tổng doanh sô'
+			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."' AND (wallet LIKE 'Đồng chia tổng doanh số' OR wallet LIKE 'Trả đồng chia tổng doanh sô')
 			ORDER BY pd.date_added DESC
 			LIMIT ".$limit."
 			OFFSET ".$offset."
@@ -3064,18 +3081,40 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT COUNT(*) AS number
 			FROM  ".DB_PREFIX."customer_transaction_history
-			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND wallet LIKE 'Hoa hồng chia lợi nhuận chuỗi spa' OR wallet LIKE 'Trả hoa hồng chia lợi nhuận chuỗi spa'
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND (wallet LIKE 'Hoa hồng chia lợi nhuận chuỗi spa' OR wallet LIKE 'Trả hoa hồng chia lợi nhuận chuỗi spa')
 		");
 
 		return $query -> row;
 	}
 
+	public function getTotalcommission_dt($id_customer){
+		$query = $this -> db -> query("
+			SELECT COUNT(*) AS number
+			FROM  ".DB_PREFIX."customer_transaction_history
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND (wallet LIKE 'Nhận ĐT từ sản phẩm của Spa' OR wallet LIKE 'Rút ĐT')
+		");
+
+		return $query -> row;
+	}
+	public function getallcommision_dt($id_customer, $limit, $offset){
+
+		$query = $this -> db -> query("
+			SELECT *
+			FROM  ".DB_PREFIX."customer_transaction_history AS pd
+			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."' AND (wallet LIKE 'Nhận ĐT từ sản phẩm của Spa' OR wallet LIKE 'Rút ĐT')
+			ORDER BY pd.date_added DESC
+			LIMIT ".$limit."
+			OFFSET ".$offset."
+		");
+
+		return $query -> rows;
+	}
 	public function getallcommision_loinhuan($id_customer, $limit, $offset){
 
 		$query = $this -> db -> query("
 			SELECT *
 			FROM  ".DB_PREFIX."customer_transaction_history AS pd
-			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."' AND wallet LIKE 'Hoa hồng chia lợi nhuận chuỗi spa' OR wallet LIKE 'Trả hoa hồng chia lợi nhuận chuỗi spa'
+			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."' AND (wallet LIKE 'Hoa hồng chia lợi nhuận chuỗi spa' OR wallet LIKE 'Trả hoa hồng chia lợi nhuận chuỗi spa')
 			ORDER BY pd.date_added DESC
 			LIMIT ".$limit."
 			OFFSET ".$offset."
@@ -3107,5 +3146,14 @@ public function getCustomerFloor($arrId, $limit, $offset){
 
 		return $query -> rows;
 	}
+	public function get_dt_customer($customer_id)
+	{
+		$query = $this -> db -> query("
+			SELECT amount 
+			FROM  ".DB_PREFIX."customer_dt_wallet
+			WHERE customer_id = '".$this -> db -> escape($customer_id)."'
+		");
 
+		return $query -> row['amount'];
+	}
 }

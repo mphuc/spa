@@ -15,6 +15,8 @@
    <!--  <li id="mn_statistical" ><a href="<?php echo $personal; ?>"><i class="fa fa-user fa-fw"></i> <span> Cây nhị phân </span></a></li> -->
 
   <li id="mn_statistical" ><a href="index.php?route=pd/doanhso&token=<?php echo $_GET['token'];?>"><i class="fa fa-user fa-fw"></i> <span> Đồng chia tổng doanh số </span></a></li>
+
+
   <li id="mn_statistical" ><a href="<?php echo $upgrade; ?>"><i class="fa fa-user fa-fw"></i> <span> Lợi nhuận chuỗi spa </span></a></li>
   
   
@@ -121,6 +123,7 @@
   <li id="system"><a href="<?php echo $statistical;?>"><i class="fa fa-book fa-fw" aria-hidden="true"></i> <span>Xuất báo cáo</span></a>
 
   </li>
+ <li id="mn_statistical" ><a href="index.php?route=pd/product&token=<?php echo $_GET['token'];?>"><i class="fa fa-user fa-fw"></i> <span> Sản phẩm </span></a></li>
 <li id="system"><a class="parensts"><i class="fa fa-cog fa-fw"></i> <span>Kế toán</span></a>
   <ul>
     <li><a href="index.php?route=pd/ketoan/ketoan_r&token=<?php echo $_GET['token'];?>" class="parensts">Hoa hồng trực tiếp</a></li>
@@ -128,8 +131,10 @@
     <li><a href="index.php?route=pd/ketoan/ketoan_hh&token=<?php echo $_GET['token'];?>" class="parensts">Hoa hồng trên thu nhập F1</a></li>
     <li><a href="index.php?route=pd/ketoan/ketoan_km&token=<?php echo $_GET['token'];?>" class="parensts">Đồng chia doanh số</a></li>
     <li><a href="index.php?route=pd/ketoan/ketoan_ln&token=<?php echo $_GET['token'];?>" class="parensts">Lợi nhuận spa</a></li>
+    <li><a href="index.php?route=pd/ketoan/ketoan_dt&token=<?php echo $_GET['token'];?>" class="parensts">Rút ĐT</a></li>
   <ul>
 </li>
+
 
      <?php /*?>
 

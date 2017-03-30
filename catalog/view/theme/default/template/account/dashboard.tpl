@@ -8,12 +8,12 @@
  <div class="fw-col-inner">
   <div class="notifi">
       <header class="fw-heading section-header heading-min-spacing subtitle-bottom text-left fw-heading-h3  wow fadeIn animated" data-wow-offset="120" data-wow-duration="1.5s" style="visibility: visible; animation-duration: 1.5s; animation-name: fadeIn;">
-         <h3 class="fw-special-title">Thông báo Art-naturalce.com<span class="bottom-subtitle-spacing"></span>     <small>Chương trình hỗ trợ và tri chân khách hàng bắt đầu từ ngày 25/03/2017</small>
+         <h3 class="fw-special-title">Thông báo Art-naturalcare.com<span class="bottom-subtitle-spacing"></span>     <small>Chương trình hỗ trợ và tri chân khách hàng bắt đầu từ ngày 25/03/2017</small>
          </h3>
       </header>
       <p>Để hỗ trợ và khác hàng đã ưu ái chọn cửa hàng chúng tôi, chúng tôi xin cám ơn các bạn đã đặt lòng tin vào Spa chúng tôi. Để đáp lại lòng tin đó, chúng tôi sẽ tri ân khách hàng bằng các <span class="label label-default">gói ưu đãi khác</span> nhau
 
-      <p>Từ các gói tri ân này khách hàng có thể được hưởng các loại hoa hồng như: hoa hồng trực tiếp, hoa hồng mã rơi, thưởng nóng của Spa. Ngoài ra các gói 100.00.000 VNĐ trở lên sẽ có cơ hội dùng Mỷ phẩm Hàn Quốc, Được giảm giá lên đến 15%, có cơ hội trở thành khách Vip của span. Ngoài ra còn hưởng lợi nhuận khuyến mãi của spa và đặc biệt là được hưởng lợi nhuận của Span lên đến 7%.</p>
+      <p>Từ các gói tri ân này khách hàng có thể được hưởng các loại hoa hồng như: hoa hồng trực tiếp, hoa hồng mã rơi, thưởng nóng của Spa. Ngoài ra các gói 100.00.000 VNĐ trở lên sẽ có cơ hội dùng Mỷ phẩm, Được giảm giá lên đến 15%, có cơ hội trở thành khách Vip của span. Ngoài ra còn hưởng lợi nhuận khuyến mãi của spa và đặc biệt là được hưởng lợi nhuận của Span lên đến 7%.</p>
       <p>Cám ơn quý khách hàng đã sử dụng dịch vụ của chúng tôi!</p>
       <p><i>Art-naturalcare.com</i></p>
   </p>
@@ -28,7 +28,7 @@
         <div class="panel-body wallet_home">
            <span class="lead-stats" href="">
               <span class="stats-number dolar c-wallet">
-              <?php echo number_format($get_package/1000) ?> PV</span>
+              <?php echo number_format($get_package) ?> VNĐ</span>
               <span class="stats-icon">
               <i class="fa fa-money color-green"></i>
               </span>
@@ -41,7 +41,7 @@
         <div class="panel-body wallet_home">
            <span class="lead-stats" href="">
               <span class="stats-number dolar c-wallet">
-              <?php echo ($get_r_bk/1000) ?> PV</span>
+              <?php echo (number_format($get_r_bk)) ?> VNĐ</span>
               <span class="stats-icon">
               <i class="fa fa-money color-green"></i>
               </span>
@@ -54,7 +54,7 @@
         <div class="panel-body wallet_home">
            <span class="lead-stats" href="">
               <span class="stats-number dolar c-wallet">
-              <?php echo ($get_ch_bk/1000) ?> PV</span>
+              <?php echo (number_format($get_ch_bk)) ?> VNĐ</span>
               <span class="stats-icon">
               <i class="fa fa-money color-green"></i>
               </span>
@@ -67,7 +67,7 @@
         <div class="panel-body wallet_home">
            <span class="lead-stats" href="">
               <span class="stats-number dolar c-wallet">
-              <?php echo ($get_km_bk/1000) ?> PV</span>
+              <?php echo (number_format($get_km_bk)) ?> VNĐ</span>
               <span class="stats-icon">
               <i class="fa fa-money color-green"></i>
               </span>
@@ -80,7 +80,7 @@
         <div class="panel-body wallet_home">
            <span class="lead-stats" href="">
               <span class="stats-number dolar c-wallet">
-             <?php echo ($get_ln_bk/1000) ?> PV</span>
+             <?php echo (number_format($get_ln_bk)) ?> VNĐ</span>
               <span class="stats-icon">
               <i class="fa fa-money color-green"></i>
               </span>
@@ -93,11 +93,11 @@
         <div class="panel-body wallet_home">
            <span class="lead-stats" href="">
               <span class="stats-number dolar c-wallet">
-              <?php echo ($sum_total_pd_all/1000) ?> PV</span>
+              <?php echo (number_format($get_dt)) ?> ĐT</span>
               <span class="stats-icon">
               <i class="fa fa-money color-green"></i>
               </span>
-              <h5>Tổng doanh số của hệ thống trong tháng</h5>
+              <h5>Tổng số ĐT</h5>
            </span>
         </div>
      </div> 

@@ -133,6 +133,58 @@ class ControllerPdCustomer extends Controller {
 			}
 		}
 	}
+
+	public function search_product() {
+		if ($this -> request -> post['keyword']) {
+			$this -> load -> model('pd/registercustom');
+			$tree = $this -> model_pd_registercustom -> getCustomLike_nameproduct($this -> request -> post['keyword']);
+			//print_r($tree); die;
+			if (count($tree) > 0) {
+				foreach ($tree as $value) {
+					 echo '<li class="list-group-item" onClick="selectU_product(' . "'" . $value['name_product'] . "',".$value['product_id']."" . ');">' . $value['name_product'] . '</li>';
+				}
+			}
+		}
+	}
+
+	public function get_product_id()
+	{
+		if ($this -> request -> post)
+		{
+			$this -> load -> model('pd/registercustom');
+			
+			$product = $this -> model_pd_registercustom -> get_product_id(intval($this -> request -> post['product_id']));
+
+			if (count($product) > 0) {
+		?>
+			<tr>
+				<td><?php echo $product['name_product'] ?></td>
+				<td><?php echo $product['sku'] ?></td>
+				<td><?php echo $product['dt'] ?></td>
+			</tr>
+			
+		<?php
+		} }
+		
+	}
+
+	public function product_id()
+	{
+		if ($this -> request -> post)
+		{
+			$this -> load -> model('pd/registercustom');
+			$product =  $this -> model_pd_registercustom -> get_product_id($this -> request ->post['product_id']);
+			if (count($product) > 0) {
+				echo $product['dt']; die;
+			}
+			else{
+				echo 0;
+			}
+		 
+		}
+		
+	}
+
 	public function getaccount_username(){
 		if ($this -> request -> post['keyword']) {
 			$this -> load -> model('pd/register');
@@ -402,6 +454,18 @@ class ControllerPdCustomer extends Controller {
 		}
 		$this -> model_pd_registercustom -> createPD($customer_id, $package,$doanhso_100,$doanhso_200,$doanhso_500,$doanhso_1450,$loinhuan);
 
+		// update dt
+		// update DT
+		$this -> model_pd_registercustom -> update_amount_dt_wallet($customer_id,doubleval($this ->request->post['dt']),true);
+		$balance_dt = $this -> model_pd_registercustom -> Get_amount_DT_Wallet($customer_id);
+		$id_history = $this -> model_pd_registercustom -> saveTranstionHistory(
+        $customer_id,
+        'Nhận ĐT từ sản phẩm của Spa', 
+        '+ ' . ($this ->request->post['dt']) . ' ĐT',
+        "Nhận ".$this ->request->post['dt']." ĐT từ sản phẩm của Spa",
+        $balance_dt
+        );
+		
 		// update ML
 		$this -> model_pd_registercustom -> update_customer_binary($customer_id, $getCustomer['p_node']);
 		
@@ -504,6 +568,18 @@ class ControllerPdCustomer extends Controller {
 		}
 		$this -> model_pd_registercustom -> createPD($customer_id, $package,$doanhso_100,$doanhso_200,$doanhso_500,$doanhso_1450,$loinhuan);
 		
+		// update DT
+		$this -> model_pd_registercustom -> update_amount_dt_wallet($customer_id,doubleval($this ->request->post['dt']),true);
+		$balance_dt = $this -> model_pd_registercustom -> Get_amount_DT_Wallet($customer_id);
+		$id_history = $this -> model_pd_registercustom -> saveTranstionHistory(
+        $customer_id,
+        'Nhận ĐT từ sản phẩm của Spa', 
+        '+ ' . ($this ->request->post['dt']) . ' ĐT',
+        "Nhận ".$this ->request->post['dt']." ĐT từ sản phẩm của Spa",
+        $balance_dt
+        );
+
+		//die;
 		// cap nhap total pd 
 		$this -> model_pd_registercustom -> upadate_totla_pd($customer_id, $package,true);
 
@@ -579,9 +655,9 @@ class ControllerPdCustomer extends Controller {
 						{
 							$per_cent =  $percent-10;
 						}
-						$amount_receve = $amount * $per_cent /100;
+						$amount = $amount * $per_cent /100;
 						// cong diem
-						$this -> model_pd_registercustom ->update_amount_hh_wallet($get_parent_f['customer_id'],$amount_receve,true);
+						$this -> model_pd_registercustom ->update_amount_hh_wallet($get_parent_f['customer_id'],$amount,true);
 						// balance
 						$balance_hh_parent = $this -> model_pd_registercustom -> Get_amount_HH_Wallet($get_parent_f['customer_id']);
 						// luu lich su
@@ -589,7 +665,7 @@ class ControllerPdCustomer extends Controller {
 						$id_history = $this -> model_pd_registercustom -> saveTranstionHistory(
 		                $get_parent_f['customer_id'],
 		                'Hoa hồng trên thu nhập trực tiếp F1', 
-		                '+ ' . (number_format($amount_receve)) . ' VNĐ',
+		                '+ ' . (number_format($amount)) . ' VNĐ',
 		                "Nhận ".$per_cent."% hoa hồng từ tài khoản ".$get_customer_id_f['username']." nhận ".(number_format($amount))." VNĐ",
 		                $balance_hh_parent
 		                );

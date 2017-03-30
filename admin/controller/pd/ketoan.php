@@ -308,7 +308,7 @@ class ControllerPdKetoan extends Controller {
 		$pagination -> limit = $limit;
 		$pagination -> num_links = 5;
 		$pagination -> text = 'text'; 
-		$pagination -> url = $this -> url -> link('pd/ketoan/ketoan_km', 'page={page}&token='.$this->session->data['token'].'', 'SSL');
+		$pagination -> url = $this -> url -> link('pd/ketoan/ketoan_ln', 'page={page}&token='.$this->session->data['token'].'', 'SSL');
 		
 		$data['customer'] =  $this-> model_pd_registercustom->get_all_customer_ln_wallet_bk($limit, $start);
 		
@@ -328,5 +328,65 @@ class ControllerPdKetoan extends Controller {
 		$this -> load -> model('pd/registercustom');
 		$this -> model_pd_registercustom->update_status_ln_bk($_GET['status'],$_GET['id']);
 		$this->response->redirect($this->url->link('pd/ketoan/ketoan_ln', 'token=' . $this->session->data['token'] .'&customer_id='.$customer_id, 'SSL'));
+	}
+
+	public function ketoan_dt() {
+		$this->document->setTitle('Hoa hồng trực tiếp');
+		$this->load->model('pd/pd');
+
+		$this -> document -> addScript('view/javascript/register/register.js');
+
+		$this -> document -> addScript('../catalog/view/javascript/autocomplete/jquery.easy-autocomplete.min.js');
+		$this -> document -> addStyle('../catalog/view/theme/default/stylesheet/autocomplete/easy-autocomplete.min.css');
+
+		if (($this->request->server['REQUEST_METHOD'] == 'POST')) {
+			
+			$url = '';
+
+			if (isset($this->request->get['filter_status'])) {
+				$url .= '&filter_status=' . $this->request->get['filter_status'];
+			}
+
+			$this->response->redirect($this->url->link('pd/pd', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+		}
+		
+		$this -> load -> model('pd/registercustom');
+
+
+		$page = isset($this -> request -> get['page']) ? $this -> request -> get['page'] : 1;
+
+		$limit = 20;
+		$start = ($page - 1) * 20;
+
+		$ts_history = $this -> model_pd_registercustom -> get_count_dt_wallet_bk();
+
+		$ts_history = $ts_history['number'];
+
+		$pagination = new Pagination();
+		$pagination -> total = $ts_history;
+		$pagination -> page = $page;
+		$pagination -> limit = $limit;
+		$pagination -> num_links = 5;
+		$pagination -> text = 'text'; 
+		$pagination -> url = $this -> url -> link('pd/ketoan/ketoan_dt', 'page={page}&token='.$this->session->data['token'].'', 'SSL');
+		
+		$data['customer'] =  $this-> model_pd_registercustom->get_all_customer_dt_wallet_bk($limit, $start);
+		
+		$data['pagination'] = $pagination -> render();
+
+
+		$data['token'] = $this->session->data['token'];
+		$data['header'] = $this->load->controller('common/header');
+		$data['column_left'] = $this->load->controller('common/column_left');
+		$data['footer'] = $this->load->controller('common/footer');
+
+	$this->response->setOutput($this->load->view('pd/ketoan_dt.tpl', $data));
+	}
+
+	public function up_dt()
+	{
+		$this -> load -> model('pd/registercustom');
+		$this -> model_pd_registercustom->update_status_dt_bk($_GET['status'],$_GET['id']);
+		$this->response->redirect($this->url->link('pd/ketoan/ketoan_dt', 'token=' . $this->session->data['token'] .'&customer_id='.$customer_id, 'SSL'));
 	}
 }

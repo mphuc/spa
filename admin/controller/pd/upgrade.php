@@ -45,19 +45,16 @@ class ControllerPdUpgrade extends Controller {
 			foreach ($get_packege_lager as $value) {
 				print_r($value);
 				switch ($value['filled']) {
-					case 300000:
-						$percent = 1;
-						break;
-					case 3333000:
+					case 100000000:
 						$percent = 5;
 						break;
-					case 6666000:
+					case 200000000:
 						$percent = 6;
 						break;
-					case 16666000:
+					case 500000000:
 						$percent = 7;
 						break;
-					case 24166000:
+					case 1450000000:
 						$percent = 10;
 						break;	
 					default:
@@ -65,14 +62,19 @@ class ControllerPdUpgrade extends Controller {
 						break;
 				}
 
-				$amount = doubleval($loinhuan) * $percent / 100 * 1000;
+				$amount = doubleval($loinhuan) * $percent / 100;
 
 				$this -> model_pd_registercustom ->update_amount_ln_wallet($value['customer_id'],$amount,true);
+
+				$balanece_ln = $this -> model_pd_registercustom -> Get_amount_LN_Wallet($value['customer_id']);
+
 			 	$id_history = $this -> model_pd_registercustom -> saveTranstionHistory(
 	                $value['customer_id'],
 	                'Hoa hồng chia lợi nhuận chuỗi spa', 
-	                '+ ' . ($amount/1000) . ' PV',
-	                "Nhận ".$percent."% lợi nhuận từ spa khi tri ân gói ".(number_format($value['filled']))." PV.");
+	                '+ ' . (number_format($amount)) . ' VNĐ',
+	                "Nhận ".$percent."% lợi nhuận từ spa khi tri ân gói ".(number_format($value['filled']))." VNĐ.",
+	                $balanece_ln
+	                );
 			}
 
 			$this-> session -> data['complaete'] = "complaete";

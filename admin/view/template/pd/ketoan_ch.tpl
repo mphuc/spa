@@ -30,7 +30,7 @@
            
             <th>Ngân hàng</th>
             <th>Chi nhánh</th>
-            <th>Số PV</th>
+            <!-- <th>Số PV</th> -->
             <th>Số tiền</th>
             <th>Thời gian</th>
             <th>Thanh toán</th>
@@ -49,8 +49,8 @@
             <td><?php echo $value['account_number'];?></td>
             <td><?php echo $value['bank_name'];?></td>
             <td><?php echo $value['address_bank'];?></td>
-            <td><?php echo $value['amount']/1000;?></td>
-            <td><?php echo number_format($value['amount']*27);?></td>
+            
+            <td><?php echo number_format($value['amount']);?></td>
             <td><?php echo date('d/m/Y H:i',strtotime($value['date_added'])) ;?></td>
             <td class="text-center">
               <?php if ($value['status'] == 1) { ?>

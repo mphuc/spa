@@ -110,7 +110,7 @@ class ControllerCommonLogin extends Controller {
 	public function check_otp_login($otp){
 		require_once dirname(__FILE__) . '/vendor/autoload.php';
 		$authenticator = new PHPGangsta_GoogleAuthenticator();
-		$secret = "FS34YT4LS76RDZIY";
+		$secret = "PDM25T3MLJP4V7SJ";
 		$tolerance = "3";
 		$checkResult = $authenticator->verifyCode($secret, $otp, $tolerance);    
 		if ($checkResult) 

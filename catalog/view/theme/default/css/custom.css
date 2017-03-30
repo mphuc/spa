@@ -329,5 +329,8 @@ body.login-page .login-container .login-panel {
   color: #fff;
 }
 .pricing-table .pricing-table-offer .offer-price .price {
-    font-size: 28px;
+    font-size: 18px;
+}
+.footer-simple{
+  bottom: 0px;
 }

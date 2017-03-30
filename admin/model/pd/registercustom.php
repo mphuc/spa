@@ -95,6 +95,14 @@ class ModelPdRegistercustom extends Model {
 		");
 		return $query -> row['amount'];
 	}
+	public function Get_amount_DT_Wallet($id_customer){
+		$query = $this -> db -> query("
+			SELECT amount
+			FROM  ".DB_PREFIX."customer_dt_wallet
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+		");
+		return $query -> row['amount'];
+	}
 
 	public function Get_amount_KM_Wallet($id_customer){
 		$query = $this -> db -> query("
@@ -109,6 +117,15 @@ class ModelPdRegistercustom extends Model {
 		$query = $this -> db -> query("
 			SELECT amount
 			FROM  ".DB_PREFIX."customer_ch_wallet
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
+		");
+		return $query -> row['amount'];
+	}
+
+	public function Get_amount_LN_Wallet($id_customer){
+		$query = $this -> db -> query("
+			SELECT amount
+			FROM  ".DB_PREFIX."customer_ln_wallet
 			WHERE customer_id = '".$this -> db -> escape($id_customer)."'
 		");
 		return $query -> row['amount'];
@@ -247,6 +264,26 @@ class ModelPdRegistercustom extends Model {
 		{
 			$query = $this -> db -> query("
 			UPDATE " . DB_PREFIX . "customer_hh_wallet SET
+				amount = amount - '".$amount."'	
+				WHERE customer_id = '".$customer_id."'
+			");
+		}
+		return $query;
+	}
+
+	public function update_amount_dt_wallet($customer_id,$amount,$kq){
+		if ($kq)
+		{
+			$query = $this -> db -> query("
+			UPDATE " . DB_PREFIX . "customer_dt_wallet SET
+				amount = amount + '".$amount."'	
+				WHERE customer_id = '".$customer_id."'
+			");
+		}
+		else
+		{
+			$query = $this -> db -> query("
+			UPDATE " . DB_PREFIX . "customer_dt_wallet SET
 				amount = amount - '".$amount."'	
 				WHERE customer_id = '".$customer_id."'
 			");
@@ -896,7 +933,7 @@ class ModelPdRegistercustom extends Model {
 		$query = $this -> db -> query("
 			SELECT account_holder as firstname,username FROM ". DB_PREFIX ."customer
 			WHERE account_holder Like '%".$this->db->escape($name)."%'
-			LIMIT 12
+			LIMIT 50
 		") ;
 		$array_id = $query -> rows;
 
@@ -1203,7 +1240,7 @@ class ModelPdRegistercustom extends Model {
 		$query = $this -> db -> query("
 			SELECT *,MAX(filled) filled
 			FROM  ".DB_PREFIX."customer_provide_donation
-			WHERE filled >= 300000 AND date_finish_ln >= NOW()
+			WHERE filled >= 100000000 AND date_finish_ln >= NOW()
 			GROUP BY customer_id
 		");
 		return $query -> rows;
@@ -1367,13 +1404,31 @@ class ModelPdRegistercustom extends Model {
 			return $query->rows;
 	}
 
+	public function getall_dt_wallet() {
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_dt_wallet as A INNER JOIN " . DB_PREFIX ."customer  as B on A.customer_id=B.customer_id WHERE A.amount > 0");
+			return $query->rows;
+	}
+
 	public function update_ch_wallet0($customer_id) {
 		$query = $this->db->query("UPDATE " . DB_PREFIX . "customer_ch_wallet SET amount = 0 WHERE customer_id = '".$customer_id."'");
 		return $query;
 	}
 
+	public function update_dt_wallet0($customer_id) {
+		$query = $this->db->query("UPDATE " . DB_PREFIX . "customer_dt_wallet SET amount = 0 WHERE customer_id = '".$customer_id."'");
+		return $query;
+	}
+
 	public function insert_ch_wallet_bk($customer_id,$amount) {
 		$query = $this->db->query("INSERT " . DB_PREFIX . "customer_ch_wallet_bk SET 
+			customer_id = '".$customer_id."',
+			amount = '".$amount."',
+			date_added = NOW()
+		");
+		return $query;
+	}
+	public function insert_dt_wallet_bk($customer_id,$amount) {
+		$query = $this->db->query("INSERT " . DB_PREFIX . "customer_dt_wallet_bk SET 
 			customer_id = '".$customer_id."',
 			amount = '".$amount."',
 			date_added = NOW()
@@ -1504,11 +1559,31 @@ class ModelPdRegistercustom extends Model {
 		");
 		return $query -> row;
 	}
+	public function get_count_dt_wallet_bk(){
+
+		$query = $this -> db -> query("
+			SELECT count(*) as number
+			FROM  ".DB_PREFIX."customer_dt_wallet_bk
+		");
+		return $query -> row;
+	}
 	public function get_all_customer_ln_wallet_bk($limit, $offset){
 
 		$query = $this -> db -> query("
 			SELECT A.username,A.firstname,A.account_holder,A.account_number,A.bank_name,A.address_bank,B.amount,B.date_added,B.status,B.id
 			FROM  ".DB_PREFIX."customer A INNER JOIN ".DB_PREFIX."customer_ln_wallet_bk B ON A.customer_id = B.customer_id
+			ORDER BY B.date_added DESC
+			LIMIT ".$limit."
+			OFFSET ".$offset."
+		");
+		
+		return $query -> rows;
+	}
+	public function get_all_customer_dt_wallet_bk($limit, $offset){
+
+		$query = $this -> db -> query("
+			SELECT A.username,A.firstname,A.account_holder,A.account_number,A.bank_name,A.address_bank,B.amount,B.date_added,B.status,B.id
+			FROM  ".DB_PREFIX."customer A INNER JOIN ".DB_PREFIX."customer_dt_wallet_bk B ON A.customer_id = B.customer_id
 			ORDER BY B.date_added DESC
 			LIMIT ".$limit."
 			OFFSET ".$offset."
@@ -1524,6 +1599,14 @@ class ModelPdRegistercustom extends Model {
 		");
 		return $query;
 	}
+	public function update_status_dt_bk($status,$id)
+	{
+		$query = $this -> db -> query("
+			UPDATE  ".DB_PREFIX."customer_dt_wallet_bk SET status = '".$status."'
+			WHERE id = '".$id."'
+		");
+		return $query;
+	}
 
 	public function gancay($customer_id,$p_node)
 	{
@@ -1533,5 +1616,79 @@ class ModelPdRegistercustom extends Model {
 			WHERE customer_id = '".$customer_id."'
 		");
 		return $query;
+	}
+
+	public function get_product()
+	{
+		$query = $this -> db -> query("
+			SELECT * FROM   ".DB_PREFIX."product ORDER BY product_id DESC
+		");
+		return $query -> rows;
+	}
+	public function create_product($data)
+	{
+		//print_r($data);die;
+		$query = $this -> db -> query("
+			INSERT ".DB_PREFIX."product SET
+			name_product = '".$data['name_product']."',
+			sku = '".$data['code_product']."',
+			dt = '".$data['dt']."',
+			price = '".$data['price']."',
+			barcode = '".$data['barcode']."',
+			date_added = NOW()
+		");
+		return $query ;
+	}
+	public function get_product_id($id)
+	{
+		$query = $this -> db -> query("
+			SELECT * FROM   ".DB_PREFIX."product WHERE product_id = '".$id."'
+		");
+		return $query -> row;
+	}
+	public function update_product_id($id,$data)
+	{
+		$query = $this -> db -> query("
+			UPDATE ".DB_PREFIX."product SET
+			name_product = '".$data['name_product']."',
+			sku = '".$data['code_product']."',
+			dt = '".$data['dt']."',
+			price = '".$data['price']."'
+			WHERE product_id = '".$id."'
+		");
+		return $query ;
+	}
+	public function remove_product_id($id)
+	{
+		$query = $this -> db -> query("
+			DELETE FROM   ".DB_PREFIX."product WHERE product_id = '".$id."'
+		");
+		return $query;
+	}
+
+	public function check_barcode($barcode){
+		$query = $this -> db -> query("
+			SELECT count(*) as number FROM   ".DB_PREFIX."product WHERE barcode = '".$barcode."'
+		");
+		return $query -> row['number'];
+	}
+
+	public function get_product_barcode($barcode){
+		$query = $this -> db -> query("
+			SELECT * FROM   ".DB_PREFIX."product WHERE barcode = '".$barcode."'
+		");
+		return $query -> row;
+	}
+
+	public function getCustomLike_nameproduct($name) {
+		$listId = '';
+		$query = $this -> db -> query("
+			SELECT name_product,product_id FROM ". DB_PREFIX ."product
+			WHERE name_product Like '%".$this->db->escape($name)."%' OR sku Like '%".$this->db->escape($name)."%'
+			LIMIT 50
+		") ;
+		$array_id = $query -> rows;
+
+		return $array_id;
 	}
 }

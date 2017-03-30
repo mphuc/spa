@@ -87,32 +87,11 @@ class ControllerCommonHeader extends Controller {
 			$data['customer_approval'] = $this->url->link('sale/customer', 'token=' . $this->session->data['token'] . '&filter_approved=0', 'SSL');
 
 			// Products
-			$this->load->model('catalog/product');
-
-			$product_total = $this->model_catalog_product->getTotalProducts(array('filter_quantity' => 0));
-
-			$data['product_total'] = $product_total;
-
-			$data['product'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&filter_quantity=0', 'SSL');
-
+			
 			// Reviews
 			$this->load->model('catalog/review');
 
-			$review_total = $this->model_catalog_review->getTotalReviews(array('filter_status' => false));
-
-			$data['review_total'] = $review_total;
-
-			$data['review'] = $this->url->link('catalog/review', 'token=' . $this->session->data['token'] . '&filter_status=0', 'SSL');
-
-			// Affliate
-			$this->load->model('marketing/affiliate');
-
-			$affiliate_total = $this->model_marketing_affiliate->getTotalAffiliates(array('filter_approved' => false));
-
-			$data['affiliate_total'] = $affiliate_total;
-			$data['affiliate_approval'] = $this->url->link('marketing/affiliate', 'token=' . $this->session->data['token'] . '&filter_approved=1', 'SSL');
-
-			$data['alerts'] = $customer_total + $product_total + $review_total + $return_total + $affiliate_total;
+			
 
 			// Online Stores
 			$data['stores'] = array();

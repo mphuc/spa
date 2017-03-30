@@ -5,7 +5,7 @@
          <div class="container">
             <div class="row">
                <div class="col-md-8">
-                  <p>Art-naturalce.com</p>
+                  <p>Art-naturalcare.com</p>
                </div>
                <div class="col-md-4">
                   <ul class="social-media">
