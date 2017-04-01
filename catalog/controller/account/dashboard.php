@@ -56,6 +56,8 @@ class ControllerAccountDashboard extends Controller {
 
 		$data['sum_total_pd_all'] = $this -> model_account_customer -> sum_total_pd_all();
 
+		$data['customer'] = $this -> model_account_customer -> getCustomer($this -> session -> data['customer_id']);
+
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/account/dashboard.tpl')) {
 			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/account/dashboard.tpl', $data));
 		} else {

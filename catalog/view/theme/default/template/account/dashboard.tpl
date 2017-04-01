@@ -8,10 +8,10 @@
  <div class="fw-col-inner">
   <div class="notifi">
       <header class="fw-heading section-header heading-min-spacing subtitle-bottom text-left fw-heading-h3  wow fadeIn animated" data-wow-offset="120" data-wow-duration="1.5s" style="visibility: visible; animation-duration: 1.5s; animation-name: fadeIn;">
-         <h3 class="fw-special-title">Thông báo Art-naturalcare.com<span class="bottom-subtitle-spacing"></span>     <small>Chương trình hỗ trợ và tri chân khách hàng bắt đầu từ ngày 25/03/2017</small>
+         <h3 class="fw-special-title">Thông báo Art-naturalcare.com<span class="bottom-subtitle-spacing"></span>     <small>Chương trình hỗ trợ và tri chân khách hàng bắt đầu từ ngày 05/04/2017</small>
          </h3>
       </header>
-      <p>Để hỗ trợ và khác hàng đã ưu ái chọn cửa hàng chúng tôi, chúng tôi xin cám ơn các bạn đã đặt lòng tin vào Spa chúng tôi. Để đáp lại lòng tin đó, chúng tôi sẽ tri ân khách hàng bằng các <span class="label label-default">gói ưu đãi khác</span> nhau
+      <p>Để hỗ trợ và khác hàng đã ưu ái chọn cửa hàng chúng tôi, chúng tôi xin cám ơn các bạn đã đặt lòng tin vào Spa chúng tôi. Để đáp lại lòng tin đó, chúng tôi sẽ tri ân khách hàng bằng các <a href="package.html"><span class="label label-default"> gói ưu đãi khác</span></a> nhau
 
       <p>Từ các gói tri ân này khách hàng có thể được hưởng các loại hoa hồng như: hoa hồng trực tiếp, hoa hồng mã rơi, thưởng nóng của Spa. Ngoài ra các gói 100.00.000 VNĐ trở lên sẽ có cơ hội dùng Mỷ phẩm, Được giảm giá lên đến 15%, có cơ hội trở thành khách Vip của span. Ngoài ra còn hưởng lợi nhuận khuyến mãi của spa và đặc biệt là được hưởng lợi nhuận của Span lên đến 7%.</p>
       <p>Cám ơn quý khách hàng đã sử dụng dịch vụ của chúng tôi!</p>
@@ -21,14 +21,28 @@
 </div>
 </div>
 
+<div class="fw-main-row" style="margin-top: 15px;">
+ <div class="fw-col-inner">
+  <div class="notifi">
+      <header class="fw-heading section-header heading-min-spacing subtitle-bottom text-left fw-heading-h3  wow fadeIn animated" data-wow-offset="120" data-wow-duration="1.5s" style="visibility: visible; animation-duration: 1.5s; animation-name: fadeIn;">
+         <h3 class="fw-special-title">Liên kết giới thiệu bạn bè<span class="bottom-subtitle-spacing"></span>     <small><?php echo HTTPS_SERVER ?>register.html&ref=<?php echo $customer['customer_code'] ?></small>
+         </h3>
+      </header>
+      
+  </p>
+ </div>
+</div>
+</div>
+
+
   <div class="clearfix" style="margin-top: 50px;"></div>
   <div class="row">
-    <h3 class="text-center" style="color: #957216">Các loại thưởng và ví tri ân của spa</h3>
+    <h3 class="text-center" style="color: #957216">Các loại thưởng và hoa hồng đã nhận</h3>
      <div class="col-md-4">
         <div class="panel-body wallet_home">
            <span class="lead-stats" href="">
               <span class="stats-number dolar c-wallet">
-              <?php echo number_format($get_package) ?> VNĐ</span>
+              <?php echo ($get_package/1000) ?> ĐT</span>
               <span class="stats-icon">
               <i class="fa fa-money color-green"></i>
               </span>
@@ -41,7 +55,7 @@
         <div class="panel-body wallet_home">
            <span class="lead-stats" href="">
               <span class="stats-number dolar c-wallet">
-              <?php echo (number_format($get_r_bk)) ?> VNĐ</span>
+              <?php echo (($get_r_bk)/1000) ?> ĐT</span>
               <span class="stats-icon">
               <i class="fa fa-money color-green"></i>
               </span>
@@ -54,7 +68,7 @@
         <div class="panel-body wallet_home">
            <span class="lead-stats" href="">
               <span class="stats-number dolar c-wallet">
-              <?php echo (number_format($get_ch_bk)) ?> VNĐ</span>
+              <?php echo (($get_ch_bk)/1000) ?> ĐT</span>
               <span class="stats-icon">
               <i class="fa fa-money color-green"></i>
               </span>
@@ -67,7 +81,7 @@
         <div class="panel-body wallet_home">
            <span class="lead-stats" href="">
               <span class="stats-number dolar c-wallet">
-              <?php echo (number_format($get_km_bk)) ?> VNĐ</span>
+              <?php echo (($get_km_bk)/1000) ?> ĐT</span>
               <span class="stats-icon">
               <i class="fa fa-money color-green"></i>
               </span>
@@ -80,7 +94,7 @@
         <div class="panel-body wallet_home">
            <span class="lead-stats" href="">
               <span class="stats-number dolar c-wallet">
-             <?php echo (number_format($get_ln_bk)) ?> VNĐ</span>
+             <?php echo (($get_ln_bk)/1000) ?> ĐT</span>
               <span class="stats-icon">
               <i class="fa fa-money color-green"></i>
               </span>
@@ -93,7 +107,7 @@
         <div class="panel-body wallet_home">
            <span class="lead-stats" href="">
               <span class="stats-number dolar c-wallet">
-              <?php echo (number_format($get_dt)) ?> ĐT</span>
+              <?php echo (($sum_total_pd_all)/1000) ?> ĐT</span>
               <span class="stats-icon">
               <i class="fa fa-money color-green"></i>
               </span>
@@ -115,7 +129,7 @@
             <th>Thứ tự</th>
             <th>Tên đăng nhập</th>
             <th>Loại hoa hồng</th>
-            <th>Số tiền</th>
+            <th>Số ĐT</th>
             <th>Thời gian</th>
           </tr>
         </thead>

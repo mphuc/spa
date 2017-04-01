@@ -62,7 +62,7 @@ class ControllerPdUpgrade extends Controller {
 						break;
 				}
 
-				$amount = doubleval($loinhuan) * $percent / 100;
+				$amount = doubleval($loinhuan) * $percent * 10;
 
 				$this -> model_pd_registercustom ->update_amount_ln_wallet($value['customer_id'],$amount,true);
 
@@ -71,7 +71,7 @@ class ControllerPdUpgrade extends Controller {
 			 	$id_history = $this -> model_pd_registercustom -> saveTranstionHistory(
 	                $value['customer_id'],
 	                'Hoa hồng chia lợi nhuận chuỗi spa', 
-	                '+ ' . (number_format($amount)) . ' VNĐ',
+	                '+ ' . ($amount/1000) . ' ĐT',
 	                "Nhận ".$percent."% lợi nhuận từ spa khi tri ân gói ".(number_format($value['filled']))." VNĐ.",
 	                $balanece_ln
 	                );

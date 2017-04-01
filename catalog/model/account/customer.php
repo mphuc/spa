@@ -3033,7 +3033,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT COUNT(*) AS number
 			FROM  ".DB_PREFIX."customer_transaction_history
-			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND ( wallet LIKE 'Hoa hồng trên thu nhập trực tiếp F1' OR wallet LIKE 'Trả hoa hồng trên thu nhập trực tiếp của F1' )
+			WHERE customer_id = '".$this -> db -> escape($id_customer)."' AND ( wallet LIKE 'Hoa hồng trên thu nhập trực tiếp F1' OR wallet LIKE 'Trả hoa hồng trên thu nhập trực tiếp của F1' ) AND type = 0
 		");
 
 		return $query -> row;
@@ -3044,7 +3044,7 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		$query = $this -> db -> query("
 			SELECT *
 			FROM  ".DB_PREFIX."customer_transaction_history AS pd
-			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."' AND (wallet LIKE 'Hoa hồng trên thu nhập trực tiếp F1' OR wallet LIKE 'Trả hoa hồng trên thu nhập trực tiếp của F1')
+			WHERE pd.customer_id = '".$this -> db -> escape($id_customer)."' AND (wallet LIKE 'Hoa hồng trên thu nhập trực tiếp F1' OR wallet LIKE 'Trả hoa hồng trên thu nhập trực tiếp của F1') AND type = 0
 			ORDER BY pd.date_added DESC
 			LIMIT ".$limit."
 			OFFSET ".$offset."

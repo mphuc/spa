@@ -386,6 +386,8 @@ class ControllerPdCustomer extends Controller {
 
 		$customer_id  = $this ->request -> post['customer_id'];
 		$package  = $this ->request -> post['package'];
+		$dt = doubleval($this ->request->post['dt'])*1000;
+
 		$this -> load -> model('pd/registercustom');
 
 		$getCustomer = $this -> model_pd_registercustom -> getCustomer($customer_id);
@@ -452,19 +454,7 @@ class ControllerPdCustomer extends Controller {
 				$percent = 0;
 				break;
 		}
-		$this -> model_pd_registercustom -> createPD($customer_id, $package,$doanhso_100,$doanhso_200,$doanhso_500,$doanhso_1450,$loinhuan);
-
-		// update dt
-		// update DT
-		$this -> model_pd_registercustom -> update_amount_dt_wallet($customer_id,doubleval($this ->request->post['dt']),true);
-		$balance_dt = $this -> model_pd_registercustom -> Get_amount_DT_Wallet($customer_id);
-		$id_history = $this -> model_pd_registercustom -> saveTranstionHistory(
-        $customer_id,
-        'Nhận ĐT từ sản phẩm của Spa', 
-        '+ ' . ($this ->request->post['dt']) . ' ĐT',
-        "Nhận ".$this ->request->post['dt']." ĐT từ sản phẩm của Spa",
-        $balance_dt
-        );
+		$this -> model_pd_registercustom -> createPD($customer_id, $package,$doanhso_100,$doanhso_200,$doanhso_500,$doanhso_1450,$loinhuan,$dt);
 		
 		// update ML
 		$this -> model_pd_registercustom -> update_customer_binary($customer_id, $getCustomer['p_node']);
@@ -474,7 +464,7 @@ class ControllerPdCustomer extends Controller {
 
 		
 		// cap nhap total pd 
-		$this -> model_pd_registercustom -> upadate_totla_pd($customer_id, $package,true);
+		$this -> model_pd_registercustom -> upadate_totla_pd($customer_id, $dt,true);
 
 
 		
@@ -482,7 +472,7 @@ class ControllerPdCustomer extends Controller {
 		if (count($get_parent) > 0)
 		{
 			//hoa hong truc tiep
-			$amount = $this -> refferal_commision($customer_id,$package);
+			$amount = $this -> refferal_commision($customer_id,$dt);
 			
 			// hoa hong cua hoa hong
 			if (doubleval($amount) > 0)
@@ -500,6 +490,9 @@ class ControllerPdCustomer extends Controller {
 	{
 		$customer_id  = $this ->request -> post['customer_id'];
 		$package  = $this ->request -> post['package'];
+		$dt = doubleval($this ->request->post['dt'])*1000;
+
+
 		$this -> load -> model('pd/registercustom');
 
 		$getCustomer = $this -> model_pd_registercustom -> getCustomer($customer_id);
@@ -566,31 +559,20 @@ class ControllerPdCustomer extends Controller {
 				$percent = 0;
 				break;
 		}
-		$this -> model_pd_registercustom -> createPD($customer_id, $package,$doanhso_100,$doanhso_200,$doanhso_500,$doanhso_1450,$loinhuan);
-		
-		// update DT
-		$this -> model_pd_registercustom -> update_amount_dt_wallet($customer_id,doubleval($this ->request->post['dt']),true);
-		$balance_dt = $this -> model_pd_registercustom -> Get_amount_DT_Wallet($customer_id);
-		$id_history = $this -> model_pd_registercustom -> saveTranstionHistory(
-        $customer_id,
-        'Nhận ĐT từ sản phẩm của Spa', 
-        '+ ' . ($this ->request->post['dt']) . ' ĐT',
-        "Nhận ".$this ->request->post['dt']." ĐT từ sản phẩm của Spa",
-        $balance_dt
-        );
 
-		//die;
+		$this -> model_pd_registercustom -> createPD($customer_id, $package,$doanhso_100,$doanhso_200,$doanhso_500,$doanhso_1450,$loinhuan,$dt);
+		
 		// cap nhap total pd 
-		$this -> model_pd_registercustom -> upadate_totla_pd($customer_id, $package,true);
+		$this -> model_pd_registercustom -> upadate_totla_pd($customer_id, $dt,true);
 
 		$get_parent = $this -> model_pd_registercustom -> getCustomer_ml($getCustomer['p_node']);
 		if (count($get_parent) > 0)
 		{
 			//hoa hong truc tiep
-			$amount = $this -> refferal_commision($customer_id,$package);
+			$amount = $this -> refferal_commision($customer_id,$dt);
 			
 			// hoa hong cua hoa hong
-			if (doubleval($amount) > 0)
+			if (floatval($amount) > 0)
 			{
 				$this -> hoahongf1($getCustomer['p_node'],$amount);
 			}
@@ -615,7 +597,17 @@ class ControllerPdCustomer extends Controller {
 			{
 				$get_child_active = $this -> model_pd_registercustom -> get_customer_ml_pnode($get_parent_f['customer_id']);
 				// level cha va co 3 con active
-				if (intval($get_parent_f['level']) >= 2 && intval($get_child_active) >= 3)
+				//if (intval($get_parent_f['level']) >= 2 && intval($get_child_active) >= 3)
+				if (intval($get_child_active) >= 3)
+				{
+					$type_history = 0;
+				}
+				else
+				{
+					$type_history = 1;
+				}
+
+				if (intval($get_parent_f['level']) >= 2)
 				{	
 					switch ($get_parent_f['filled']) {
 						case 3000000:
@@ -645,7 +637,7 @@ class ControllerPdCustomer extends Controller {
 					}
 					if ($percent > 0)
 					{
-						$check_packet_active = $this -> model_pd_registercustom -> get_ml_child_active($get_parent_f['customer_id'],$get_parent_f['filled']);
+						/*$check_packet_active = $this -> model_pd_registercustom -> get_ml_child_active($get_parent_f['customer_id'],$get_parent_f['filled']);
 
 						if (intval($check_packet_active) >= 3)
 						{
@@ -654,10 +646,13 @@ class ControllerPdCustomer extends Controller {
 						else
 						{
 							$per_cent =  $percent-10;
-						}
-						$amount = $amount * $per_cent /100;
+						}*/
+
+						$amount_pent_recieve = $amount;
+
+						$amount = $amount * $percent /100;
 						// cong diem
-						$this -> model_pd_registercustom ->update_amount_hh_wallet($get_parent_f['customer_id'],$amount,true);
+						$this -> model_pd_registercustom ->update_amount_hh_wallet($get_parent_f['customer_id'],$amount,true,$percent);
 						// balance
 						$balance_hh_parent = $this -> model_pd_registercustom -> Get_amount_HH_Wallet($get_parent_f['customer_id']);
 						// luu lich su
@@ -665,9 +660,10 @@ class ControllerPdCustomer extends Controller {
 						$id_history = $this -> model_pd_registercustom -> saveTranstionHistory(
 		                $get_parent_f['customer_id'],
 		                'Hoa hồng trên thu nhập trực tiếp F1', 
-		                '+ ' . (number_format($amount)) . ' VNĐ',
-		                "Nhận ".$per_cent."% hoa hồng từ tài khoản ".$get_customer_id_f['username']." nhận ".(number_format($amount))." VNĐ",
-		                $balance_hh_parent
+		                '+ ' . ($amount/1000) . ' ĐT',
+		                "Nhận ".$percent."% hoa hồng từ tài khoản ".$get_customer_id_f['username']." nhận ".(number_format($amount_pent_recieve/1000))." ĐT",
+		                $balance_hh_parent,
+		                $type_history
 		                );
 						
 					}
@@ -698,31 +694,31 @@ class ControllerPdCustomer extends Controller {
 			switch ($get_goidautu['package']) {
 				case 3000000:
 					$percent = 6;
-					$max_profit = 30000000;
+					$max_profit = 1000000;
 					break;
 				case 6000000:
 					$percent = 8;
-					$max_profit = 40000000;
+					$max_profit = 1333000;
 					break;
 				case 9000000:
 					$percent = 10;
-					$max_profit = 50000000;
+					$max_profit = 1666000;
 					break;
 				case 100000000:
 					$percent = 10;
-					$max_profit = 50000000;
+					$max_profit = 1666000;
 					break;
 				case 200000000:
 					$percent = 10;
-					$max_profit = 50000000;
+					$max_profit = 1666000;
 					break;
 				case 500000000:
 					$percent = 10;
-					$max_profit = 50000000;
+					$max_profit = 1666000;
 					break;
 				case 1450000000:
 					$percent = 10;
-					$max_profit = 50000000;
+					$max_profit = 1666000;
 					break;
 				default:
 					$percent = 0;
@@ -742,8 +738,8 @@ class ControllerPdCustomer extends Controller {
 				 $id_history = $this -> model_pd_registercustom -> saveTranstionHistory(
 	                $get_parent['customer_id'],
 	                'Hoa hồng trực tiếp', 
-	                '+ ' . (number_format($amount)) . ' VNĐ',
-	                "Nhận ".$percent."% hoa hồng trực tiếp từ tài khoản ".$getCustomer['username']." khi tri ân gói ".(number_format($package))." VNĐ.",
+	                '+ ' . ($amount/1000) . ' ĐT',
+	                "Nhận ".$percent."% hoa hồng trực tiếp từ tài khoản ".$getCustomer['username']." khi tri ân gói ".(number_format($package/1000))." ĐT.",
 	                $balance_r_parent
 	                ); 
 			}

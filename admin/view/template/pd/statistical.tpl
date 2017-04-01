@@ -106,26 +106,7 @@
     <div class="clearfix" style="margin-top: 30px;"></div>
     
     <br><br>
-    <table style="">
-      <thead>
-        <tr>
-          <th colspan="2">Xuất TĐ</th>
-           
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td colspan="2">
-           
-          <a onclick="return confirm('Bạn có chắc chắn không?')" class="click" href="index.php?route=report/exportCustomerid/export_dt_wallet&token=<?php echo $_GET['token'];?>">
-            <button type="button" class="btn btn-info" style="background: #0000ff">Xuất TĐ</button>
-          </a>
-            
-          </td>
-          
-        </tr>
-      </tbody>
-    </table>
+    
     <div class="clearfix" style="margin-top: 30px;"></div>
   </div>
 </div>

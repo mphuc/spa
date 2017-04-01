@@ -587,7 +587,7 @@ class ModelPdRegister extends Model {
 		$query = $this -> db -> query("
 			SELECT username AS name, customer_id FROM ". DB_PREFIX ."customer
 			WHERE username Like '%".$this->db->escape($name)."%'
-			LIMIT 12
+			LIMIT 20
 		") ;
 		$array_id = $query -> rows;
 

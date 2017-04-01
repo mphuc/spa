@@ -8,7 +8,7 @@ $_['column_no']  = 'STT';
 $_['column_wallet']      = 'Loại hoa hồng';
 $_['column_date_added']  = 'Thời gian';
 $_['column_description'] = 'Mô tả';
-$_['column_amount']      = 'Số VNĐ';
+$_['column_amount']      = 'Số ĐT';
 $_['column_type']      = 'Loại';
 
 // Text

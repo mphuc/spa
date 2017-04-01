@@ -251,12 +251,13 @@ class ModelPdRegistercustom extends Model {
 		return $query;
 	}
 
-	public function update_amount_hh_wallet($customer_id,$amount,$kq){
+	public function update_amount_hh_wallet($customer_id,$amount,$kq,$percent){
 		if ($kq)
 		{
 			$query = $this -> db -> query("
 			UPDATE " . DB_PREFIX . "customer_hh_wallet SET
-				amount = amount + '".$amount."'	
+				amount = amount + '".$amount."',
+				percent = '".$percent."'
 				WHERE customer_id = '".$customer_id."'
 			");
 		}
@@ -338,7 +339,7 @@ class ModelPdRegistercustom extends Model {
 			WHERE customer_id = '".$customer_id."'
 		");
 	}
-	public function saveTranstionHistory($customer_id, $wallet, $text_amount, $system_decsription,$balance){
+	public function saveTranstionHistory($customer_id, $wallet, $text_amount, $system_decsription,$balance,$type = 0){
 		$date_added= date('Y-m-d H:i:s');
 		$query = $this -> db -> query("
 			INSERT INTO ".DB_PREFIX."customer_transaction_history SET
@@ -347,6 +348,7 @@ class ModelPdRegistercustom extends Model {
 			text_amount = '".$text_amount."',
 			system_decsription = '".$system_decsription."',
 			balance = '".$balance."',
+			type = '".$type."',
 			date_added = '".$date_added."'
 		");
 		$id = $this -> db -> getLastId();
@@ -367,7 +369,7 @@ class ModelPdRegistercustom extends Model {
 		return $query -> row;
 	}
 
-	public function createPD($customer_id, $amount,$doanhso_100,$doanhso_200,$doanhso_500,$doanhso_1450,$loinhuan){
+	public function createPD($customer_id, $amount,$doanhso_100,$doanhso_200,$doanhso_500,$doanhso_1450,$loinhuan,$dt){
 		$date_added= date('Y-m-d H:i:s');
 		$date_finish_100 = strtotime ( '+ '.$doanhso_100.' month' , strtotime ($date_added));
 		$date_finish_100= date('Y-m-d H:i:s',$date_finish_100) ;
@@ -393,6 +395,7 @@ class ModelPdRegistercustom extends Model {
 			date_finish_ds500 = '".$date_finish_500."',
 			date_finish_ds1450 = '".$date_finish_1450."',
 			date_finish_ln = '".$date_finish_ln."',
+			dt = '".$dt."',
 			status = 1
 		");
 		

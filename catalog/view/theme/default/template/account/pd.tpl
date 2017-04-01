@@ -59,7 +59,7 @@
         
       
         <div class="fw-default-row">
-           Số tiền tham gia: <?php echo number_format($pds['filled']/1000) ?> PV                        
+           Số tiền tham gia: <?php echo number_format($pds['dt']/1000) ?> TĐ                        
         </div>
         <div class="fw-default-row">
            Trực tiếp: <?php echo $tructiep ?>                      

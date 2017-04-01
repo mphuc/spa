@@ -5,9 +5,9 @@
    ?>
 <div class="container">
 <!-- Start .content -->
-<div class="row">
+<div class="row" style="min-height: 490px;">
 
-<div class="col-md-6 col-md-push-3" style="min-height: 450px;">
+<div class="col-md-6 col-md-push-3" >
 <h3 class="text-center" style="color: #7d3c93">Cài đặt tài khoản</h3>
    <div class="page-tabs" style="margin-bottom:15px">
       <ul class="nav nav-tabs">

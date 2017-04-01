@@ -131,7 +131,7 @@
     <li><a href="index.php?route=pd/ketoan/ketoan_hh&token=<?php echo $_GET['token'];?>" class="parensts">Hoa hồng trên thu nhập F1</a></li>
     <li><a href="index.php?route=pd/ketoan/ketoan_km&token=<?php echo $_GET['token'];?>" class="parensts">Đồng chia doanh số</a></li>
     <li><a href="index.php?route=pd/ketoan/ketoan_ln&token=<?php echo $_GET['token'];?>" class="parensts">Lợi nhuận spa</a></li>
-    <li><a href="index.php?route=pd/ketoan/ketoan_dt&token=<?php echo $_GET['token'];?>" class="parensts">Rút ĐT</a></li>
+    <!-- <li><a href="index.php?route=pd/ketoan/ketoan_dt&token=<?php echo $_GET['token'];?>" class="parensts">Rút ĐT</a></li> -->
   <ul>
 </li>
 

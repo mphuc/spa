@@ -150,7 +150,7 @@
                       <li id="menu-item-155" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-on"><a title="Offers" href="hoahong.html">Hoa hồng trên thu nhập trực tiếp của F1</a></li>
                       <li id="menu-item-155" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-on"><a title="Offers" href="doanhso.html">Hoa hồng Đồng chia tổng doanh số</a></li>
                       <li id="menu-item-155" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-on"><a title="Offers" href="loinhuan.html">Chia lợi nhuận chuỗi spa</a></li>
-                      <li id="menu-item-155" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-on"><a title="Offers" href="dt.html">Lịch sử ĐT</a></li>
+                      
                     </ul>
                   </li>
                   <li id="menu-item-161" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-no"><a title="Blog" href="setting.html">Cài đặt</a></li>

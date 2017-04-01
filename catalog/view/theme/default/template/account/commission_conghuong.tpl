@@ -35,7 +35,7 @@
                       <td data-title="<?php echo $lang['column_amount'] ?>"><?php echo $value['text_amount'];?></td>
                       <td data-title="<?php echo $lang['column_date_added'] ?>"><?php echo date('d/m/Y H:i',strtotime($value['date_added']));?></td>
                       <td data-title="<?php echo $lang['column_wallet'] ?>"><?php echo $value['wallet'];?></td>
-                      <td data-title="Số dư ví cộng hưởng"><?php echo number_format($value['balance']);?> VNĐ</td>
+                      <td data-title="Số dư ví cộng hưởng"><?php echo ($value['balance']/1000);?> ĐT</td>
                       <!-- <td data-title="<?php echo $lang['Description'] ?>"><?php echo $value['system_decsription'];   ?></td> -->
                     </tr>
                     <?php

@@ -21,7 +21,7 @@
             <strong>Success!</strong> Chia lợi nhuận thành công.
           </div>
         <?php } unset($_SESSION['complaete']) ?>
-          <label for="">Nhập lợi nhuận chuỗi spa (Nhập số bằng tiền bằng VNĐ)</label>
+          <label for="">Nhập lợi nhuận chuỗi spa (Nhập số bằng tiền bằng ĐT)</label>
           <input name="loinhuan" type="number" class="form-control" required="required" >
           
         </div>
