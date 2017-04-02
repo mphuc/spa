@@ -111,7 +111,7 @@
               <span class="stats-icon">
               <i class="fa fa-money color-green"></i>
               </span>
-              <h5>Tổng số ĐT</h5>
+              <h5>Tổng số ĐT kích hoạt trong tháng</h5>
            </span>
         </div>
      </div> 

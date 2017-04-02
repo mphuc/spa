@@ -52,8 +52,6 @@ class ControllerAccountDashboard extends Controller {
 
 		$data['get_ln_bk'] = $this -> get_km_bk($this -> session -> data['customer_id']);
 
-		$data['get_dt'] = $this -> model_account_customer -> get_dt_customer($this -> session -> data['customer_id']);
-
 		$data['sum_total_pd_all'] = $this -> model_account_customer -> sum_total_pd_all();
 
 		$data['customer'] = $this -> model_account_customer -> getCustomer($this -> session -> data['customer_id']);
