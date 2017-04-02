@@ -1,12 +1,11 @@
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: pink;
+  color: #fff;
 }
 ::-moz-placeholder { /* Firefox 19+ */
-  color: pink;
-}
+  color: #fff;
 :-ms-input-placeholder { /* IE 10+ */
-  color: pink;
+  color: #fff;
 }
 :-moz-placeholder { /* Firefox 18- */
-  color: pink;
+  color: #fff;
 }

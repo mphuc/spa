@@ -47,7 +47,7 @@
    <body class="home page page-id-99 page-template page-template-one-page page-template-one-page-php" >
     <div id="page-preloader" class="animated text-center" style="display: none;height: 135%; ">
       <img src="catalog/view/theme/default/images/logo.png" alt="wellness Center Wordpress theme" class="logo-prelaoder" style="margin-top: 100px;" />
-      <h1 class="title-preloader">Art-naturalce.com</h1>
+      <h1 class="title-preloader">Art-naturalcare.com</h1>
       <div class="spinner">
          <div class="double-bounce1"></div>
          <div class="double-bounce2"></div>

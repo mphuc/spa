@@ -334,3 +334,7 @@ body.login-page .login-container .login-panel {
 .footer-simple{
   bottom: 0px;
 }
+
+.login-container input::-webkit-input-placeholder {
+  color: #fff;
+}

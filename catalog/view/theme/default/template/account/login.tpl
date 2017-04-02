@@ -99,7 +99,7 @@
 
                         </div>
                         
-                       <p class="text-center mb5"><a href="forgot.html" class="color-gray-lighter color-hover-white s16 transition" style=" color: #848484 !important;font-size: 14px; margin-top: 15px; font-size: 13px;float: left; "> Quên mật khẩu ?</a>
+                       <p class="text-center mb5"><a href="forgot.html" class="color-gray-lighter color-hover-white s16 transition" style=" color: #fff !important;font-size: 14px; margin-top: 15px; font-size: 13px;float: left; "> Quên mật khẩu ?</a>
                        </p>
                         <div class="clearfix"></div>
                     </form>
