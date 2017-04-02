@@ -126,7 +126,7 @@
                <div class="col-md-6" style="min-height: 84px">
                   <div class="input-group">
                      <label class="password icon" for="username">Chủ tài khoản</label>
-                     <input name="account_holder" id="account_holder" value="" readonly="true"  placeholder="Chủ tài khoản "/>
+                     <input name="account_holder" id="account_holder" value="" placeholder="Chủ tài khoản "/>
                      <span id="account_holder-error" class="field-validation-error" style="display: none;">
                      <span>Vui lòng nhập chủ tài khoản</span>
                      </span> 
