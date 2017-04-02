@@ -62,7 +62,7 @@ class ControllerAccountRegisters extends Controller {
 	
 			$checkC_Wallet = $this -> model_account_customer -> checkR_Wallet($cus_id);
 			if(intval($checkC_Wallet['number'])  === 0){
-				if(!$this -> model_account_customer -> insertR_WalletR($amount, $cus_id)){
+				if(!$this -> model_account_customer -> insertR_WalletR($cus_id,$amount)){
 					die();
 				}
 			}

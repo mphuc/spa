@@ -71,7 +71,7 @@ $( document ).ready(function() {
         $('#account_number').parent().removeClass('has-error');
         $('#account_number').parent().removeClass('has-success');
         if (jQuery('#bank_name').val() == "Vietcombank"){
-            $('#account_holder').attr('readonly', true);
+            //$('#account_holder').attr('readonly', true);
             if($(this).val().length === 13){
                 $('#icon_loading').show();
 
