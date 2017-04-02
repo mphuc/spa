@@ -35,9 +35,9 @@ class ControllerAccountForgotten extends Controller {
 
 			$this->model_account_customer->editPasswordCustomForEmail($customer_info, $password);
 
-			$subject = sprintf('Iontach - Mật khẩu mới', html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8'));
+			$subject = sprintf('art-naturalcare.com - Mật khẩu mới', html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8'));
 
-			$message  = sprintf('Một mật khẩu mới đã được yêu cầu từ Iontach', html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8')) . "\n\n";
+			$message  = sprintf('Một mật khẩu mới đã được yêu cầu từ art-naturalcare.com', html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8')) . "\n\n";
 			$message .= 'Mật khẩu của bạn là:' . "\n\n";
 			$message .= $password;
 

@@ -95,12 +95,12 @@ class ControllerAccountRegisters extends Controller {
 				}
 			}
 
-			$checkDT_Wallet = $this -> model_account_customer -> checkDT_Wallet($cus_id);
+			/*$checkDT_Wallet = $this -> model_account_customer -> checkDT_Wallet($cus_id);
 			if(intval($checkDT_Wallet['number'])  === 0){
 				if(!$this -> model_account_customer -> insertDT_Wallet($amount, $cus_id)){
 					die();
 				}
-			}
+			}*/
 
 			$mail = new Mail();
 			$mail -> protocol = $this -> config -> get('config_mail_protocol');
