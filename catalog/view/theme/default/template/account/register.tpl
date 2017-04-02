@@ -115,7 +115,7 @@
                   <div class="input-group">
                      <label class="email icon" for="emailaddress">Số tài khoản ngân hàng</label>
                      <input data-url="<?php echo $self -> url -> link('account/register/getjson', '', 'SSL'); ?>" autocomplete="off"  name="account_number"  id="account_number" value="" data-link="<?php echo $self -> url -> link('account/register/checkcmnd', '', 'SSL'); ?>" placeholder="Số tài khoản ngân hàng"/>
-                     <span><i class=" fa fa-cog fa-spin fa-fw"></i></span>
+                     <span><i class=" fa fa-cog fa-spin fa-fw" id="icon_loading"></i></span>
                      <span id="account_number-error" class="field-validation-error" style="display: none;">
                      <span>Vui lòng nhập số tài khoản ngân hàng</span>
                      </span>

@@ -48,14 +48,14 @@ $( document ).ready(function() {
                     $('#account_holder').attr('placeholder', 'Bank account number does not exist!');
                     $('#account_holder').parent().addClass('has-error');
                     $('#account_number').parent().addClass('has-error');
-                    $('.conf-vcb span i').hide();
+                    $('#icon_loading').hide();
                   }
                   else
                   {
                     $('#account_holder').val(name);
                     $('label.blue').css({'color':'#468847'});
                     $('input.blue').css({'border':'1px solid #468847'});
-                    $('.conf-vcb span i').hide();
+                    $('#icon_loading').hide();
                     $('#account_number').parent().addClass('has-success');
                     $('#account_holder').parent().addClass('has-success');
                     $('#account_holder').parent().removeClass('has-error');
@@ -73,7 +73,7 @@ $( document ).ready(function() {
         if (jQuery('#bank_name').val() == "Vietcombank"){
             $('#account_holder').attr('readonly', true);
             if($(this).val().length === 13){
-                $('.conf-vcb span i').show();
+                $('#icon_loading').show();
 
                var number = $(this).val();
                     var url  = $(this).data('url') ;
@@ -82,7 +82,7 @@ $( document ).ready(function() {
 
             }else{
                 $('#account_holder').parent().removeClass('has-success');
-                $('.conf-vcb span i').hide();
+                $('#icon_loading').hide();
                 $('#account_holder').val('');
             }
         }
