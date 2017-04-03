@@ -42,7 +42,7 @@
       <!-- Preloader start -->
       <!-- <div id="page-preloader" class="animated text-center">
          <img src="catalog/view/theme/default/home/themes/wellnesscenter/assets/img/preloader-logo.png" alt="wellness Center Wordpress theme" class="logo-prelaoder"/>
-         <h1 class="title-preloader">Art-naturalce.com</h1>
+         <h1 class="title-preloader">Art-naturalcare.com</h1>
          <div class="spinner">
             <div class="double-bounce1"></div>
             <div class="double-bounce2"></div>
@@ -1280,7 +1280,7 @@ bằng đối tác tự lựa chọn).
                                  <div class="address-icon">
                                     <i class="fa fa-map-marker"></i>
                                  </div>
-                                 <p>Art-naturalce.com. Address<br/><a href="#">13A Hoàng Hoa Thám, Phường 4, Quận Tân Bình - TP. Hồ Chí Minh</a></p>
+                                 <p>Art-naturalcare.com. Địa chỉ: <br/><a href="#">13A Hoàng Hoa Thám, Phường 4, Quận Tân Bình - TP. Hồ Chí Minh</a></p>
                               </div>
                            </div>
                         </div>
@@ -1332,7 +1332,7 @@ bằng đối tác tự lựa chọn).
          <!-- Footer edit section -->
          <div class="section-edit">
             <div class="container relative">
-               <span class="section-abc">Contact</span>
+               <span class="section-abc">Liên hệ</span>
             </div>
          </div>
       </div>
@@ -1342,7 +1342,7 @@ bằng đối tác tự lựa chọn).
          <div class="container">
             <div class="row">
                <div class="col-md-8">
-                  <p>Art-naturalce.com</p>
+                  <p>Art-naturalcare.com</p>
                </div>
                <div class="col-md-4">
                   <ul class="social-media">
@@ -1362,9 +1362,7 @@ bằng đối tác tự lựa chọn).
       <div class="hidden" id="xs_form_success">
          <div class="vfb-form-success">Your information was successfully submitted.</div>
       </div>
-      <script type='text/javascript'>
      
-      
       <script type='text/javascript' src='catalog/view/theme/default/home/js/jquery/ui/core.mine899.js?ver=1.11.4'></script>
       <script type='text/javascript' src='catalog/view/theme/default/home/js/jquery/ui/datepicker.mine899.js?ver=1.11.4'></script>
       <script type='text/javascript' src='catalog/view/theme/default/home/plugins/booked/js/spin.min7406.js?ver=2.0.1'></script>

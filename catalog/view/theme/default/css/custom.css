@@ -1,14 +1,14 @@
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: #aaa;
+  color: #fff;
 }
 ::-moz-placeholder { /* Firefox 19+ */
-  color: #aaa;
+  color: #fff;
 }
 :-ms-input-placeholder { /* IE 10+ */
-  color: #aaa;
+  color: #fff;
 }
 :-moz-placeholder { /* Firefox 18- */
-  color: #aaa;
+  color: #fff;
 }
 p{
   margin-bottom: 15px;
@@ -75,6 +75,13 @@ h3.text-center{
 .select_bank option{
   background: rgba(108, 88, 76, 0.9);
 }
+@media screen and (max-width: 900px){
+  .dropdown-menu {
+    
+  }
+}
+
+
 @media screen and (max-width: 600px) {
 
     table {
@@ -336,5 +343,8 @@ body.login-page .login-container .login-panel {
 }
 
 .login-container input::-webkit-input-placeholder {
-  color: #fff;
+  color: #fff !important;
+}
+.login-container input{
+  padding-left: 25px !important;
 }

@@ -72,7 +72,7 @@ class ControllerPdUpgrade extends Controller {
 	                $value['customer_id'],
 	                'Hoa hồng chia lợi nhuận chuỗi spa', 
 	                '+ ' . ($amount/1000) . ' ĐT',
-	                "Nhận ".$percent."% lợi nhuận từ spa khi tri ân gói ".(number_format($value['filled']))." VNĐ.",
+	                "Nhận ".$percent."% khi tri ân gói ".(number_format($value['filled']))." VNĐ.",
 	                $balanece_ln
 	                );
 			}

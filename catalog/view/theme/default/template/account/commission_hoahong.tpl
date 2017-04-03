@@ -20,7 +20,7 @@
                       <th><?php echo $lang['column_date_added'] ?></th>
                       <th><?php echo $lang['column_wallet'] ?></th>
                       <th>Số dư ví thu nhập trực tiếp của F1</th>
-                      <!-- <th><?php echo $lang['column_description'] ?></th> -->
+                      <th><?php echo $lang['column_description'] ?></th>
                   </tr>
                   </thead>
                   <tbody>
@@ -37,7 +37,7 @@
                       <td data-title="<?php echo $lang['column_wallet'] ?>"><?php echo $value['wallet'];?> </td>
                       <td data-title="Số dư ví thu nhập trực tiếp của F1"><?php echo ($value['balance']/1000);?> ĐT</td>
                       
-                      <!-- <td data-title="<?php echo $lang['Description'] ?>"><?php echo $value['system_decsription'];   ?></td> -->
+                      <td data-title="<?php echo $lang['column_description'] ?>"><?php echo $value['system_decsription'];   ?></td>
                     </tr>
                     <?php
                       }

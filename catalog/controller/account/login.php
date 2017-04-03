@@ -215,7 +215,7 @@ class ControllerAccountLogin extends Controller {
 		// Check if customer has been approved.
 
 		if ($this->request->post['capcha'] != $_SESSION['cap_code']) {
-				$this->error['warning'] = "Capcha faild";
+				$this->error['warning'] = "Cảnh báo: Sai mã bảo vệ";
 	    }
 	    
 		$customer_info = $this->model_account_customer->getCustomerByUsername($this->request->post['email']);

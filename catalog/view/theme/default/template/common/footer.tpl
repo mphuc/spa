@@ -56,6 +56,11 @@
 
             return false;
          });
+
+         $('.dropdown-toggle').on('click',function(){
+              $(this).children('.dropdown-menu').toggle();
+            })
+
       </script>
 </body>
 </html>

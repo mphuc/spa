@@ -72,6 +72,7 @@
                 }
             }
 
+            
         </script>
  
 		<link href="catalog/view/javascript/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css">

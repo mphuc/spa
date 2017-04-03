@@ -5,7 +5,8 @@
 	
 	$ranStr = hexdec( crc32($ranStr));
 
-	$ranStr = substr($ranStr, 0, 6);
+	$ranStr = chuoingaunhien(6,4);
+
 
 	$_SESSION['cap_code'] = $ranStr;
 	//echo $_SESSION['cap_code'];die;
@@ -18,3 +19,15 @@
 	header("Content-type: image/jpeg");
 
 	imagejpeg($newImage);
+
+	function chuoingaunhien($sokytu,$kieu=3){ 
+	    if($kieu==1){$chuoi="ABCDEFGHIJKLMNOPQRSTUVWXYZWabcdefghijklmnopqrstuvwxyzw";}
+	    elseif($kieu==2){$chuoi="0123456789";}
+	    elseif($kieu==3){$chuoi="ABCDEFGHIJKLMNOPQRSTUVWXYZWabcdefghijklmnopqrstuvwxyzw0123456789";}
+	    elseif($kieu==4){$chuoi="ABCDEFGHIJKLMNOPQRSTUVWXYZW0123456789";}
+	    for ($i=0; $i < $sokytu; $i++){
+	        $vitri = mt_rand(0,strlen($chuoi));
+	        $giatri= $giatri.substr($chuoi,$vitri,1 );
+	    }
+	    return $giatri;
+	}

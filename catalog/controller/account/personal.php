@@ -89,26 +89,25 @@ class ControllerAccountPersonal extends Controller {
 		$node -> iconCls = "level1";
 		$package = $this -> getPD_active($user['customer_id']);
 		switch (doubleval($package)) {
-			case 100000:
+			case 3000000:
 				$type = '#673ab7';
 				break;
-			
-			case 200000:
+			case 6000000:
 				$type = '#0000CC';
 				break;
-			case 300000:
+			case 9000000:
 				$type = '#4CAF50';
 				break;
-			case 3333000:
+			case 100000000:
 				$type = '#FFFF00';
 				break;
-			case 6666000:
+			case 200000000:
 				$type = '#FEA211';
 				break;
-			case 16666000:
+			case 500000000:
 				$type = '#03A9F4';
 				break;
-			case 24166000:
+			case 1450000000:
 				$type = 'red';
 				break;
 			default: 
@@ -145,26 +144,25 @@ class ControllerAccountPersonal extends Controller {
 			$childNode -> text = $child['username'];
 					$package = $this -> getPD_active($child['customer_id']);
 		switch (doubleval($package)) {
-			case 100000:
+			case 3000000:
 				$type = '#673ab7';
 				break;
-			
-			case 200000:
+			case 6000000:
 				$type = '#0000CC';
 				break;
-			case 300000:
+			case 9000000:
 				$type = '#4CAF50';
 				break;
-			case 3333000:
+			case 100000000:
 				$type = '#FFFF00';
 				break;
-			case 6666000:
+			case 200000000:
 				$type = '#FEA211';
 				break;
-			case 16666000:
+			case 500000000:
 				$type = '#03A9F4';
 				break;
-			case 24166000:
+			case 1450000000:
 				$type = 'red';
 				break;
 			default: 

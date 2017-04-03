@@ -58,7 +58,7 @@ class ControllerPdDoanhso extends Controller {
 			                $value['customer_id'],
 			                'Đồng chia tổng doanh số', 
 			                '+ ' . ($amount/1000) . ' ĐT',
-			                "Nhận 1 % hoa hồng từ tổng doanh số ".($sum_total_pd_all/1000)." ĐT. Với số gói tri ân lớn hơn hoặc bằng 9.000.000 VNĐ là ".count($package_90)." gói",
+			                "Nhận 1 % từ tổng doanh số ".($sum_total_pd_all/1000)." ĐT. Với số gói tri ân lớn hơn hoặc bằng 9.000.000 VNĐ là ".count($package_90)." gói",
 			                $balance_km
 			                );
 						$this -> conghuong($value['customer_id'],$amount);
@@ -76,7 +76,7 @@ class ControllerPdDoanhso extends Controller {
 		                $value['customer_id'],
 		                'Đồng chia tổng doanh số', 
 		                '+ ' . ($amount/1000) . ' ĐT',
-		                "Nhận 2 % hoa hồng từ tổng doanh số ".(number_format($sum_total_pd_all/1000))." ĐT. Với số gói tri ân lớn hơn hoặc bằng 100.000.000 VNĐ là ".count($package_100)." gói",
+		                "Nhận 2 % từ tổng doanh số ".(number_format($sum_total_pd_all/1000))." ĐT. Với số gói tri ân lớn hơn hoặc bằng 100.000.000 VNĐ là ".count($package_100)." gói",
 		                $balance_km
 		                );
 					$this -> conghuong($value['customer_id'],$amount);
@@ -92,7 +92,7 @@ class ControllerPdDoanhso extends Controller {
 		                $value['customer_id'],
 		                'Đồng chia tổng doanh số', 
 		                '+ ' . ($amount/1000) . ' ĐT',
-		                "Nhận 1 % hoa hồng từ tổng doanh số ".(number_format($sum_total_pd_all/1000))." ĐT. Với số gói tri ân lớn hơn hoặc bằng 200.000.000 VNĐ là ".count($package_200)." gói",
+		                "Nhận 1 % từ tổng doanh số ".(number_format($sum_total_pd_all/1000))." ĐT. Với số gói tri ân lớn hơn hoặc bằng 200.000.000 VNĐ là ".count($package_200)." gói",
 		                $balance_km
 		                );
 					$this -> conghuong($value['customer_id'],$amount);
@@ -109,7 +109,7 @@ class ControllerPdDoanhso extends Controller {
 		                $value['customer_id'],
 		                'Đồng chia tổng doanh số', 
 		                '+ ' . ($amount/1000) . ' ĐT',
-		                "Nhận 1 % hoa hồng từ tổng doanh số ".(number_format($sum_total_pd_all/1000))." ĐT. Với số gói tri ân lớn hơn hoặc bằng 500.000.000 VNĐ là ".count($package_500)." gói",
+		                "Nhận 1 % từ tổng doanh số ".(number_format($sum_total_pd_all/1000))." ĐT. Với số gói tri ân lớn hơn hoặc bằng 500.000.000 VNĐ là ".count($package_500)." gói",
 		                $balance_km
 		                );
 					$this -> conghuong($value['customer_id'],$amount);
@@ -125,7 +125,7 @@ class ControllerPdDoanhso extends Controller {
 		                $value['customer_id'],
 		                'Đồng chia tổng doanh số', 
 		                '+ ' . ($amount/1000) . ' ĐT',
-		                "Nhận 1 % hoa hồng từ tổng doanh số ".(number_format($sum_total_pd_all/1000))." ĐT. Với số gói tri ân lớn hơn hoặc bằng 1.450.000.000 VNĐ là ".count($package_1450)." gói",
+		                "Nhận 1 % từ tổng doanh số ".(number_format($sum_total_pd_all/1000))." ĐT. Với số gói tri ân lớn hơn hoặc bằng 1.450.000.000 VNĐ là ".count($package_1450)." gói",
 		                $balance_km
 		                );
 					$this -> conghuong($value['customer_id'],$amount);
@@ -180,8 +180,6 @@ class ControllerPdDoanhso extends Controller {
 				}
 				if ($percent > 0)
 				{
-
-
 					$amount_recevie = $amount * $percent/ 100;
 					$this -> model_pd_registercustom ->update_amount_ch_wallet($get_parent['customer_id'],$amount_recevie,true);
 					
@@ -191,7 +189,7 @@ class ControllerPdDoanhso extends Controller {
 		                $get_parent['customer_id'],
 		                'Hoa hồng cộng hưởng', 
 		                '+ ' . ($amount_recevie/1000) . ' ĐT',
-		                "Nhận ".$percent." % hoa hồng từ cộng hưởng từ ".($get_customer['username'])." nhận ".($amount/1000)." ĐT",
+		                "Nhận ".$percent." % cộng hưởng từ ".($get_customer['username'])." nhận ".($amount/1000)." ĐT",
 		                $balance_ch
 		                );
 				}

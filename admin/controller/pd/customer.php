@@ -661,7 +661,7 @@ class ControllerPdCustomer extends Controller {
 		                $get_parent_f['customer_id'],
 		                'Hoa hồng trên thu nhập trực tiếp F1', 
 		                '+ ' . ($amount/1000) . ' ĐT',
-		                "Nhận ".$percent."% hoa hồng từ tài khoản ".$get_customer_id_f['username']." nhận ".(number_format($amount_pent_recieve/1000))." ĐT",
+		                "Nhận ".$percent."% từ ".$get_customer_id_f['username']." nhận ".(number_format($amount_pent_recieve/1000))." ĐT",
 		                $balance_hh_parent,
 		                $type_history
 		                );
@@ -739,7 +739,7 @@ class ControllerPdCustomer extends Controller {
 	                $get_parent['customer_id'],
 	                'Hoa hồng trực tiếp', 
 	                '+ ' . ($amount/1000) . ' ĐT',
-	                "Nhận ".$percent."% hoa hồng trực tiếp từ tài khoản ".$getCustomer['username']." khi tri ân gói ".(number_format($package/1000))." ĐT.",
+	                "Nhận ".$percent."% từ ".$getCustomer['username']." tri ân gói ".(number_format($package/1000))." ĐT.",
 	                $balance_r_parent
 	                ); 
 			}

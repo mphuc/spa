@@ -50,7 +50,7 @@ $(function () {
                     '<div class="iw-title">Beauty Gold Spa - 13A Hoàng Hoa Thám, Phường 4, Quận Tân Bình - TP. Hồ Chí Minh</div>' +
                     '<div class="iw-content">' +
                       '<div class="iw-subTitle">Beauty Gold Spa</div>' +
-                      '<img src="catalog/view/theme/default/home/uploads/sites/4/2015/12/nav-logo-coral.png" width="115" >' +
+                      '<img src="catalog/view/theme/default/images/logo.png" width="115" >' +
                       '<p>Trung tâm làm đẹp số một Việt Nam</p>' +
                       '<div class="iw-subTitle">Liên hệ</div>' +
                       '<p>Hotline: 0974 894 221<br>'+
