@@ -141,13 +141,13 @@ class ControllerAccountForgotten extends Controller {
 		$language -> load('account/forgotten');
 		$lang = $language -> data;
 		if ($this->request->post['capcha'] != $_SESSION['cap_code']) {
-				$this->error['warning'] = "Capcha faild";
+				$this->error['warning'] = "Cảnh báo: Sai mã bảo vệ";
 	    }
 	    
 		if (!isset($this->request->post['email'])) {
-			$this->error['warning'] = $lang['error_email'];
+			$this->error['warning'] = "Cảnh báo: Tên người dùng không được tìm thấy trong hồ sơ của chúng tôi, vui lòng thử lại!";
 		} elseif (!$this->model_account_customer->getCustomerByUsername($this->request->post['email'])) {
-			$this->error['warning'] = $lang['error_email'];
+			$this->error['warning'] = "Cảnh báo: Tên người dùng không được tìm thấy trong hồ sơ của chúng tôi, vui lòng thử lại!";
 		}
 
 		return !$this->error;

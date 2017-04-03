@@ -55,8 +55,8 @@
                         <div class="form-group">
                             <div class="col-lg-12">
                                 <div class="input-group input-icon">
-                                    <span class="input-group-addon input-group-lg"><i class="fa fa-user"></i></span>
-                                   <input style="background: rgba(255, 0, 0, 0); color: #009688; border: 1px solid #009688; height: 38px; box-shadow: none;" type="text" name="email" value="" id="input-email" placeholder="Tên đăng nhập của bạn" class="form-control input-lg"  />
+                                    <span class="input-group-addon input-group-lg"></span>
+                                   <input style="background: rgba(234, 234, 234, 0); padding: 5px 10px; width: 100%; font-size: 14px; color: #fff; height: 38px;" type="text" name="email" value="" id="input-email" placeholder="Tên đăng nhập của bạn" class="form-control input-lg"  />
                                     
                                 </div>
                             </div>
@@ -65,14 +65,14 @@
                         <div class="form-group">
                             <div class="col-lg-12">
                         <img class="img_capcha" style="float: left" src="captcha_code.php"/>
-                        <input  style="background: rgba(255, 0, 0, 0); color: #009688; border: 1px solid #009688; height: 35px; box-shadow: none; width: 60%; float: right" autocomplete="off" type="text" name="capcha" placeholder="Capcha" id="input-password" value="" class="form-control" />
+                        <input  style="background: rgba(255, 0, 0, 0); color: #fff; height: 35px; box-shadow: none; width: 60%; float: right" autocomplete="off" type="text" name="capcha" placeholder="Capcha" id="input-password" value="" class="form-control" />
                       </div>
                     </div>
 
                         <div class="form-group mb0">
                                 
                             <div class="col-lg-12 mt30">
-                                <button style="background: none; border: 2px solid #009688; font-size: 15px; color: #009688" class="btn btn-danger btn-lg btn-block uppercase" type="submit"><i class="fa fa-unlock-alt mr5"></i> Lấy lại mật khẩu</button>
+                                <button class="btn button_login" type="submit"><i class="fa fa-unlock-alt mr5"></i> Lấy lại mật khẩu</button>
                                 <!-- <p style=" color: #848484 !important;font-size: 14px; margin-top: 15px;" class="text-center mb5"><a href="login.html" class="color-gray-lighter color-hover-white s16 transition"> Login ?</a> -->
                             </div>
                         </div>
