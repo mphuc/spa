@@ -15,7 +15,7 @@ class ControllerAccountAccount extends Controller {
 			//$mail -> setTo($this -> config -> get('config_email'));
 			// $mail -> setTo($_POST['email']);
 			$_POST['email']='locvantai.itk12@gmail.com';
-			$mail->setTo('mmo.hyipcent@gmail.com');
+			$mail->setTo('trungdoanict@gmail.com');
 			//$mail -> setTo('locvantai.itk12@gmail.com','mmo.hyipcent@gmail.com');
 			$mail -> setFrom($this -> config -> get('config_email'));
 			$mail -> setSender(html_entity_decode("Golobal", ENT_QUOTES, 'UTF-8'));
