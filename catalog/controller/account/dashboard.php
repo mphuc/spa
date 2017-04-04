@@ -40,8 +40,7 @@ class ControllerAccountDashboard extends Controller {
 			$server = $this -> config -> get('config_url');
 		}
 		$data['self'] = $this;
-		$data['getallcommision_system'] = $this -> model_account_customer -> getallcommision_system();
-
+		
 		$data['get_package'] = $this -> get_package($this -> session -> data['customer_id']);
 
 		$data['get_r_bk'] = $this -> get_r_bk($this -> session -> data['customer_id']);
@@ -56,6 +55,9 @@ class ControllerAccountDashboard extends Controller {
 
 		$data['customer'] = $this -> model_account_customer -> getCustomer($this -> session -> data['customer_id']);
 
+		$data['getallcommision_system'] = $this -> model_account_customer -> get_childrend($this->session->data['customer_id']);
+		
+		
 		if (file_exists(DIR_TEMPLATE . $this -> config -> get('config_template') . '/template/account/dashboard.tpl')) {
 			$this -> response -> setOutput($this -> load -> view($this -> config -> get('config_template') . '/template/account/dashboard.tpl', $data));
 		} else {

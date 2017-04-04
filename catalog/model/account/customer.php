@@ -2695,9 +2695,10 @@ public function getCustomerFloor($arrId, $limit, $offset){
 		if (strlen($mang) > 0)
 		{
 			$querys = $this -> db -> query("
-				SELECT *
-				FROM  ".DB_PREFIX."customer
-				WHERE customer_id IN (".$mang.")
+				SELECT A.username,B.*
+				FROM  ".DB_PREFIX."customer A INNER JOIN ".DB_PREFIX."customer_transaction_history B
+				ON A.customer_id = B.customer_id
+				WHERE B.customer_id IN (".$mang.") ORDER BY B.date_added DESC
 			");
 			return $querys->rows; 
 		}
