@@ -61,7 +61,7 @@ class ControllerPdDoanhso extends Controller {
 			                "Nhận 1 % từ tổng doanh số ".($sum_total_pd_all/1000)." ĐT. Với số gói tri ân lớn hơn hoặc bằng 9.000.000 VNĐ là ".count($package_90)." gói",
 			                $balance_km
 			                );
-						$this -> conghuong($value['customer_id'],$amount);
+						//$this -> conghuong($value['customer_id'],$amount);
 					}
 				}
 
