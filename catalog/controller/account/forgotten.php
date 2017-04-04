@@ -59,8 +59,6 @@ class ControllerAccountForgotten extends Controller {
 			$mail->setText($message);
 			//print_r($customer_info['email']); die;
 			$mail->send();
-			print_r($mail);
-			die;
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			// Add to activity log
