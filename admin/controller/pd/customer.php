@@ -458,6 +458,10 @@ class ControllerPdCustomer extends Controller {
 		
 		// update ML
 		$this -> model_pd_registercustom -> update_customer_binary($customer_id, $getCustomer['p_node']);
+
+		// update count_p_node
+		$this -> model_pd_registercustom -> up_hh_count_pnode($getCustomer['p_node']);
+		
 		
 		// update level
 		$this -> model_pd_registercustom -> update_level_ml($customer_id, 2);

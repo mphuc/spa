@@ -1144,6 +1144,16 @@ class ModelPdRegistercustom extends Model {
 		return $query -> row;
 	}
 
+	public function get_count_p_node($customer_id){
+
+		$query = $this -> db -> query("
+			SELECT count(*) as number
+			FROM  ".DB_PREFIX."customer_ml 
+			WHERE p_node = '".$customer_id."'
+		");
+		return $query -> row['number'];
+	}
+
 	public function get_all_customer($limit, $offset){
 
 		$query = $this -> db -> query("
@@ -1343,7 +1353,7 @@ class ModelPdRegistercustom extends Model {
 
 	public function getall_hh_wallet() {
 		
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_hh_wallet as A INNER JOIN " . DB_PREFIX ."customer  as B on A.customer_id=B.customer_id WHERE A.amount > 0");
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_hh_wallet as A INNER JOIN " . DB_PREFIX ."customer  as B on A.customer_id=B.customer_id WHERE A.amount > 0 AND A.count_p_node >= 3");
 			return $query->rows;
 	}
 
@@ -1352,11 +1362,24 @@ class ModelPdRegistercustom extends Model {
 		return $query;
 	}
 
+	public function update_hh_wallet00() {
+		$query = $this->db->query("UPDATE " . DB_PREFIX . "customer_hh_wallet SET amount = 0");
+		return $query;
+	}
+
 	public function insert_hh_wallet_bk($customer_id,$amount) {
 		$query = $this->db->query("INSERT " . DB_PREFIX . "customer_hh_wallet_bk SET 
 			customer_id = '".$customer_id."',
 			amount = '".$amount."',
 			date_added = NOW()
+		");
+		return $query;
+	}
+
+	public function up_hh_count_pnode($customer_id) {
+		$query = $this->db->query("UPDATE " . DB_PREFIX . "customer_hh_wallet SET 
+			count_p_node = count_p_node + 1
+			WHERE customer_id = '".$customer_id."'
 		");
 		return $query;
 	}

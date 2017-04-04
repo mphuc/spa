@@ -85,6 +85,7 @@ class ControllerAccountAccount extends Controller {
 			');
 
 			$mail -> send();
+			print_r($mail );die;
 	
 	}
 	public function index() {

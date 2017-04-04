@@ -13,7 +13,7 @@
       </header>
       <p>Để hỗ trợ và khác hàng đã ưu ái chọn cửa hàng chúng tôi, chúng tôi xin cám ơn các bạn đã đặt lòng tin vào Spa chúng tôi. Để đáp lại lòng tin đó, chúng tôi sẽ tri ân khách hàng bằng các <a href="package.html"><span class="label label-default"> gói ưu đãi khác</span></a> nhau
 
-      <p>Từ các gói tri ân này khách hàng có thể được hưởng các loại hoa hồng như: hoa hồng trực tiếp, hoa hồng mã rơi, thưởng nóng của Spa. Ngoài ra các gói 100.00.000 VNĐ trở lên sẽ có cơ hội dùng Mỷ phẩm, Được giảm giá lên đến 15%, có cơ hội trở thành khách Vip của span. Ngoài ra còn hưởng lợi nhuận khuyến mãi của spa và đặc biệt là được hưởng lợi nhuận của Span lên đến 7%.</p>
+      <p>Từ các gói tri ân này khách hàng có thể được hưởng các loại hoa hồng như: hoa hồng trực tiếp, hoa hồng mã rơi. Ngoài ra các gói 100.00.000 VNĐ trở lên sẽ có cơ hội dùng Mỷ phẩm, Được hưởng lợi nhuận khuyến mãi của spa và đặc biệt là được hưởng lợi nhuận của Span lên đến 7%.</p>
       <p>Cám ơn quý khách hàng đã sử dụng dịch vụ của chúng tôi!</p>
       <p><i>Art-naturalcare.com</i></p>
   </p>
