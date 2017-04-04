@@ -114,11 +114,11 @@ class ControllerAccountRegisters extends Controller {
 			//$mail -> setTo($this -> config -> get('config_email'));
 			$mail->setTo($_POST['email']);
 			$mail -> setFrom($this -> config -> get('config_email'));
-			$mail -> setSender(html_entity_decode("Iontach", ENT_QUOTES, 'UTF-8'));
+			$mail -> setSender(html_entity_decode("Art naturalcare", ENT_QUOTES, 'UTF-8'));
 			$mail -> setSubject("Chúc mừng bạn đã đăng ký thành công!");
 			$mail -> setHtml('
 				
-		   <table align="center" bgcolor="#eeeeee" border="0" cellpadding="0" cellspacing="0" style="background:#eeeeee;border-collapse:collapse;line-height:100%!important;margin:0;padding:0;width:100%!important">
+		   <table align="center" border="0" cellpadding="0" cellspacing="0" style="background: url('.HTTPS_SERVER.'catalog/view/theme/default/images/bg.jpg);border-collapse:collapse;line-height:100%!important;margin:0;padding:0;width:100%!important; background-size:100%">
 		   <tbody>
 		      <tr>
 		         <td>
@@ -126,7 +126,7 @@ class ControllerAccountRegisters extends Controller {
 		   <tbody>
 		      <tr>
 		         <td>
-		            <table style="border-collapse:collapse;color:#c0c0c0;font-family:"Helvetica Neue",Arial,sans-serif;font-size:13px;line-height:26px;margin:0 auto 26px;width:100%">
+		            <table style="border-collapse:collapse;color:#ffffff;font-family:"Helvetica Neue",Arial,sans-serif;font-size:13px;line-height:26px;margin:0 auto 26px;width:100%">
 		               <tbody>
 		                  <tr>
 		                     <td></td>
@@ -144,41 +144,43 @@ class ControllerAccountRegisters extends Controller {
 		            <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:separate;font-size:1px;height:2px;line-height:3px;width:100%">
 		               <tbody>
 		                  <tr>
-		                     <td bgcolor="#9B59B6" valign="top"> </td>
+		                     <td bgcolor="#957216" valign="top"> </td>
 		                  </tr>
 		               </tbody>
 		            </table>
 		            <table style="width:600px; border="0" cellpadding="0" cellspacing="0" height="100%" style="border-collapse:collapse;border-color:#dddddd;border-radius:0 0 3px 3px;border-style:solid;border-width:1px;width:100%" width="100%">
-		   <tbody>
-		      <tr>
-		         <td align="center" valign="top">
-		            <table border="0" cellpadding="0" cellspacing="0" width="100%">
-		               <tbody>
-		                  <tr>
-		                     <td align="center" style="background:#ffffff">
-		                        <a href="https://happymoney.us" target="_blank" data-saferedirecturl="happymoney.us">
-		                           <h1 style="margin-top:30px; font-weight:bold;">HAPPY MONEY</h1>
-		                        </a>
-		                     </td>
-		                  </tr>
+						   <tbody>
+						      <tr>
+						         <td align="center" valign="top">
+						            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+						               <tbody>
+						                  <tr>
+						                     <td align="center" style="background: rgba(255, 255, 255, 0.29);">
+						                        <a href="https://art-naturalcare.com" target="_blank" data-saferedirecturl="art-naturalcare.com">
+						                        <img  src="'.HTTPS_SERVER.'catalog/view/theme/default/images/logo.png" alt="logo" style="margin: 20px auto; width:200px;"></div>
+						                           
+						                        </a>
+						                     </td>
+		                  					</tr>
 		               </tbody>
 		            </table>
 		         </td>
 		      </tr>
-		      <table style="background:#FFF; padding:25px;width:600px">
+		    </tbody>
+		    </table>
+		      <table style="background: rgba(255, 255, 255, 0.29); padding:25px;width:600px">
 		      	<tbody>
 		      		<tr>
-		      			<td style="padding:30px;background:white;color:#525252;font-family:"Helvetica Neue",Arial,sans-serif;font-size:15px;line-height:22px;overflow:hidden;">
+		      			<td style="padding:30px;rgba(255, 255, 255, 0);color:#FFF;font-family:"Helvetica Neue",Arial,sans-serif;font-size:15px;line-height:22px;overflow:hidden;">
 		            <p><span>Xin chào <b>'.$_POST['username'].'</b>,</span></p>
 		            <p><span>Chúc mừng bạn đã đăng ký tài khoản thành công!</span></p>
-		            <p><strong>Tên tài khoản ngân hàng: <span style="color:#5cb85c">'.$_POST['account_holder'].'</span></strong></p>
-		            <p><strong>Số tài khoản ngân hàng: <span style="color:#5cb85c">'.$_POST['account_number'].'</span></strong></p>
-		            <p><strong>Email: <span style="color:#5cb85c">'.$_POST['email'].'</span></strong></p>
-		              <p><strong>Số điện thoại: <span style="color:#5cb85c">'.$_POST['telephone'].'</span></strong></p>
-		            <p><strong>Tên tài khoản: <span style="color:#5cb85c">'.$_POST['username'].'</span></strong></p>
-		            <p><strong>Mật khẩu đăng nhập: <span style="color:#5cb85c">'.$_POST['password'].'</span></strong></p>
-					<p><strong>Mật khẩu 2: <span style="color:#5cb85c">'.$_POST['password2'].'</span></strong></p>
-		            <p><strong>Vào ngày<strong>: '.date('d/m/Y H:i:s').'</p></td></p>
+		            <p><strong>Tên tài khoản ngân hàng: <span style="color:#957216">'.$_POST['account_holder'].'</span></strong></p>
+		            <p><strong>Số tài khoản ngân hàng: <span style="color:#957216">'.$_POST['account_number'].'</span></strong></p>
+		            <p><strong>Email: <span style="color:#957216">'.$_POST['email'].'</span></strong></p>
+		              <p><strong>Số điện thoại: <span style="color:#957216">'.$_POST['telephone'].'</span></strong></p>
+		            <p><strong>Tên tài khoản: <span style="color:#957216">'.$_POST['username'].'</span></strong></p>
+		            <p><strong>Mật khẩu đăng nhập: <span style="color:#957216">'.$_POST['password'].'</span></strong></p>
+		            <p><strong>Thời gian đăng ký<strong>: <span style="color:#957216">'.date('d/m/Y H:i:s').'</span></p></td></p>
 		             
 		      		</tr>
 		      	</tbody>
@@ -186,7 +188,8 @@ class ControllerAccountRegisters extends Controller {
 		       <hr>
 
 			');
-			//$mail -> send();
+			//print_r($mail);die;
+			$mail -> send();
 			unset($this->session->data['customer_id']);
 			$this->response->redirect(HTTPS_SERVER . 'login.html#success');
 			
