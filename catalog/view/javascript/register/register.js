@@ -167,6 +167,10 @@ $( document ).ready(function() {
                 self.find('#confirmpassword-error').hide();
                 self.find('#confirmpasswordtransaction').parent().removeClass('has-error');
                 self.find('#confirmpasswordtransaction-error').hide();
+                self.find('#account_number-error').hide();
+                self.find('#account_holder-error').hide();
+                self.find('#branch_bank-error').hide();
+                self.find('#capcha-error').hide();
 
                 $('#agreeTerm').is(":checked") && $('#agreeTerm').removeClass('validation-error');
 
@@ -278,7 +282,16 @@ $( document ).ready(function() {
                 return true;
             },
 
-            
+            capcha: function(self) {
+                if (self.find('#capcha').existsWithValue() === 0) {
+                    self.find('#capcha').parent().addClass('has-error');
+                    self.find('#capcha-error').show();
+                    self.find('#capcha').focus();
+                    self.find('#capcha-error span').html('Vui lòng nhập mã bảo vệ');
+                    return false;
+                }
+                return true;
+            },
 
             checkUserExit: function(self, callback) {
                 if (self.find('#username').existsWithValue() !== 0) {
@@ -315,6 +328,26 @@ $( document ).ready(function() {
                     });
                 }
             },
+
+            checkCapchaExit: function(self, callback) {
+                if (self.find('#capcha').existsWithValue() !== 0) {
+                    $.ajax({
+                        url: self.find('#capcha').data('link'),
+                        type: 'GET',
+                        data: {
+                            'capcha': self.find('#capcha').val()
+                        },
+                        async: false,
+                        success: function(result) {
+
+                            result = $.parseJSON(result);
+            
+                            callback(result.success === 0);
+                        }
+                    });
+                }
+            },
+
             checkPhoneExit: function(self, callback) {
                 if (self.find('#phone').existsWithValue() !== 0) {
                     $.ajax({
@@ -368,6 +401,7 @@ $( document ).ready(function() {
 
 
         validate.init($(this));
+
         if (validate.userName($(this)) === false) {
             return false;
         } else {
@@ -460,17 +494,18 @@ $( document ).ready(function() {
         }
         
        
-         /*if (validate.BitcoinWalletAddress($(this)) === false) {
+        if (validate.capcha($(this)) === false) {
             return false;
         } else {
             validate.init($(this));
-            self.find('#BitcoinWalletAddress').parent().addClass('has-success');
-        }*/
+            self.find('#capcha').parent().addClass('has-success');
+        }
 
         var checkUser = null;
         var checkEmail = null;
         var checkPhone = null;
         var checkCMND = null;
+        var checkCapcha = null;
         var check_BitcoinWalletAddress =null;
 
         validate.checkUserExit($(this), function(callback) {
@@ -634,26 +669,24 @@ $( document ).ready(function() {
                     self.find('#confirmpassword-error').hide();
                     self.find('#confirmpasswordtransaction').parent().removeClass('has-error');
                     self.find('#confirmpasswordtransaction-error').hide();
-                    $('#agreeTerm').is(":checked") && $('#agreeTerm').removeClass('validation-error');
+                    
                     self.find('#cmnd').parent().addClass('has-success');
                     checkCMND = true;
                 }
             });
         }
-        /*if (checkUser && checkEmail && checkPhone && checkCMND) {
-            validate.check_BitcoinWalletAddress($(this), function(callback) {
+
+
+        if (checkUser && checkEmail && checkPhone && checkCMND) {
+            validate.checkCapchaExit($(this), function(callback) {
                 if (!callback) {
-                    self.find('#BitcoinWalletAddress').parent().addClass('has-error');
-                    self.find('#BitcoinWalletAddress-error').show();
-                    self.find('#BitcoinWalletAddress-error span').html('Wrong bitcoin wallet address!!');
+                    self.find('#capcha').parent().addClass('has-error');
+                    self.find('#capcha-error').show();
+                    self.find('#capcha-error span').html('Mã bảo vệ không đúng');
                     self.find('#password').val('');
                     self.find('#password').parent().removeClass('has-success');
                     self.find('#confirmpassword').val('');
                     self.find('#confirmpassword').parent().removeClass('has-success');
-                    // self.find('#password2').val('');
-                    self.find('#password2').parent().removeClass('has-success');
-                    // self.find('#confirmpasswordtransaction').val('');
-                    self.find('#confirmpasswordtransaction').parent().removeClass('has-success');
                     return false;
                 } else {
                     self.find('#username').parent().removeClass('has-error');
@@ -664,8 +697,6 @@ $( document ).ready(function() {
                     self.find('#phone-error').hide();
                     self.find('#cmnd').parent().removeClass('has-error');
                     self.find('#cmnd-error').hide();
-                    self.find('#BitcoinWalletAddress').parent().removeClass('has-error');
-                    self.find('#BitcoinWalletAddress-error').hide();
                     self.find('#country').parent().removeClass('has-error');
                     self.find('#country-error').hide();
                     self.find('#password').parent().removeClass('has-error');
@@ -676,16 +707,14 @@ $( document ).ready(function() {
                     self.find('#confirmpassword-error').hide();
                     self.find('#confirmpasswordtransaction').parent().removeClass('has-error');
                     self.find('#confirmpasswordtransaction-error').hide();
-                    $('#agreeTerm').is(":checked") && $('#agreeTerm').removeClass('validation-error');
-                    self.find('#BitcoinWalletAddress').parent().addClass('has-success');
-                    check_BitcoinWalletAddress = true;
+                    
+                    self.find('#capcha').parent().addClass('has-success');
+                    checkCapcha = true;
                 }
             });
-        }*/
-    
+        }
 
-        
-        if(checkUser && checkEmail && checkPhone && checkCMND){
+        if(checkUser && checkEmail && checkPhone && checkCMND && checkCapcha){
             jQuery('#page-preloader').show();
             jQuery('body').css({'overflow':'hidden'});
             $('.btn-register').hide();

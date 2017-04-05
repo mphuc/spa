@@ -45,8 +45,7 @@ class ControllerAccountRegisters extends Controller {
 	}
 
 	public function confirmSubmit() {
-		if ($this->request->server['REQUEST_METHOD'] === 'POST'){
-
+		if ($this->request->server['REQUEST_METHOD'] === 'POST' && $this->request->post['capcha'] == $_SESSION['cap_code']){	
 			$this -> load -> model('customize/register');
 			$this -> load -> model('account/auto');
 			$this -> load -> model('account/customer');
@@ -211,6 +210,14 @@ class ControllerAccountRegisters extends Controller {
 			$this -> response -> setOutput(json_encode($json));
 		}
 	}
+
+	public function checkcapcha() {
+		if ($this -> request -> get['capcha']) {
+			$json['success'] = ($this -> request -> get['capcha']== $_SESSION['cap_code']) ? 0 : 1;
+			$this -> response -> setOutput(json_encode($json));
+		}
+	}
+
 	public function checkphone() {
 		if ($this -> request -> get['phone']) {
 			$this -> load -> model('customize/register');

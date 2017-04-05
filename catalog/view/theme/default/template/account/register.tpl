@@ -163,6 +163,17 @@
                   </div>
                </div>
                
+               <div class="col-md-6 col-md-push-3" style="min-height: 84px">
+                  <div class="input-group" style="position: relative;">
+                     <label class="password icon text-center" for="username">Mã bảo vệ</label>
+                     <input class="valid" data-link="<?php echo $self -> url -> link('account/registers/checkcapcha', '', 'SSL'); ?>" name="capcha" placeholder="Nhập mã bảo vệ" id="capcha">
+                     <span id="capcha-error" class="field-validation-error" style="display: none;">
+                     <span>Vui lòng nhập mã bảo vệ</span>
+                     </span>
+                     <img class="img_capcha" style="position: absolute; right: 0px;" src="captcha_code.php"/>
+                  </div>
+               </div>
+               
                <div class="col-md-12 text-center" style="margin-top: 20px;">
                   <div >
                      <button class="btn green" type="submit">Đăng ký tài khoản</button>
